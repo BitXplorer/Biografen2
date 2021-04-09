@@ -17,7 +17,23 @@
 		<java.version>11</java.version>
 		<vaadin.version>14.5.1</vaadin.version>
 	</properties>
+
 	<dependencies>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-bom</artifactId>
+			<version>${vaadin.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+
+		<!-- för att köra liveReload-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -41,41 +57,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-ordered-layout-flow</artifactId>
-            <version>2.0.0</version>
-        </dependency>
+
+
 		<dependency>
 			<groupId>com.vaadin</groupId>
-			<artifactId>flow-server</artifactId>
-			<version>2.5.1</version>
+			<artifactId>vaadin-core</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-button-flow</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-icons-flow</artifactId>
-			<version>2.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-text-field-flow</artifactId>
-			<version>2.0.5</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>flow-data</artifactId>
-			<version>2.0.15</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-grid-flow</artifactId>
-			<version>4.0.8</version>
-		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

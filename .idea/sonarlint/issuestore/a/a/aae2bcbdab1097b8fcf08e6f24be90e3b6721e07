@@ -1,0 +1,10 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üïÖ…øÿÿÿÿ
+=
+java:S1659""Declare "back" on a separate line.(‚Ø„áûÿÿÿÿ
+B
+java:S16020",Remove useless curly braces around statement(•³û»
+J
+java:S1874B"/Remove this use of "isEmpty"; it is deprecated.(ùÁŒ­ÿÿÿÿÿ
+<
+java:S1948"&Make "repo" transient or serializable.(¿æğá

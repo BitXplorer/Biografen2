@@ -1,0 +1,31 @@
+
+x
+java:S1192M"bDefine a constant instead of duplicating this literal "=================================" 9 times.(«”­
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( şí…
+H
+java:S1135"2Complete the task associated to this TODO comment.(…ïœ†
+I
+java:S1874"3Remove this use of "newInstance"; it is deprecated.(šâ’ó
+N	java:S106"9Replace this use of System.out or System.err by a logger.(İ·¥„
+N	java:S106"9Replace this use of System.out or System.err by a logger.(‰ëÉ
+N	java:S106M"9Replace this use of System.out or System.err by a logger.(«”­
+N	java:S106N"9Replace this use of System.out or System.err by a logger.(ƒØö¬
+N	java:S106O"9Replace this use of System.out or System.err by a logger.(«”­
+N	java:S106P"9Replace this use of System.out or System.err by a logger.(ŒÖéÛ
+N	java:S106Q"9Replace this use of System.out or System.err by a logger.(«”­
+N	java:S106h"9Replace this use of System.out or System.err by a logger.(«”­
+N	java:S106i"9Replace this use of System.out or System.err by a logger.(ÒµÁ
+N	java:S106j"9Replace this use of System.out or System.err by a logger.(«”­
+S	java:S106k"9Replace this use of System.out or System.err by a logger.(ò’áûÿÿÿÿ
+N	java:S106l"9Replace this use of System.out or System.err by a logger.(«”­
+O	java:S106—"9Replace this use of System.out or System.err by a logger.(«”­
+T	java:S106˜"9Replace this use of System.out or System.err by a logger.(”ô»óûÿÿÿÿ
+O	java:S106™"9Replace this use of System.out or System.err by a logger.(«”­
+T	java:S106š"9Replace this use of System.out or System.err by a logger.(Şè»¶úÿÿÿÿ
+O	java:S106›"9Replace this use of System.out or System.err by a logger.(«”­
+J
+java:S1481K"/Remove this unused "hadResults" local variable.(Áéñ…úÿÿÿÿ
+J
+java:S1481f"/Remove this unused "hadResults" local variable.(Áéñ…úÿÿÿÿ
+K
+java:S1481•"/Remove this unused "hadResults" local variable.(Áéñ…úÿÿÿÿ

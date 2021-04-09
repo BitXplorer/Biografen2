@@ -1,0 +1,18 @@
+
+V
+java:S1128"@Remove this unused import 'com.vaadin.flow.component.grid.Grid'.(²õÑÛ
+_
+java:S1128
+"JRemove this unused import 'com.vaadin.flow.component.textfield.TextField'.(ÂòÉ
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üïÖ…øÿÿÿÿ
+V
+java:S1128"ARemove this unused import 'org.springframework.util.StringUtils'.(Ğôÿ
+]
+java:S1128"GRemove this unused import 'com.vaadin.flow.data.value.ValueChangeMode'.(èÀÍ²
+:
+java:S1659"$Declare "movies" on a separate line.(àâäô
+:
+java:S1659"$Declare "salong" on a separate line.(àâäô
+`
+java:S1128"ERemove this unused import 'com.vaadin.flow.router.NavigationHandler'.(ñÃóïùÿÿÿÿ

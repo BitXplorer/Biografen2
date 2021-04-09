@@ -1,0 +1,6 @@
+
+0
+java:S2275 "Not enough arguments.(¦έεÿϋÿÿÿÿ
+J
+java:S1128"5Remove this unused import 'javax.persistence.Column'.(μϋζH
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–Υ¨ά

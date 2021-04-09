@@ -1,0 +1,42 @@
+
+I
+java:S1659".Declare "socialSecurityNo" on a separate line.(àƒÜÍúÿÿÿÿ
+A
+java:S1659"&Declare "lastName" on a separate line.(àƒÜÍúÿÿÿÿ
+B
+java:S1659"'Declare "firstname" on a separate line.(àƒÜÍúÿÿÿÿ
+A
+java:S1948"+Make "movieRepo" transient or serializable.(ˆÍÓ
+B
+java:S1659"'Declare "shiftName" on a separate line.(àƒÜÍúÿÿÿÿ
+B
+java:S1948"'Make "staff" transient or serializable.(÷×†¾üÿÿÿÿ
+C
+java:S1659"(Declare "postalCode" on a separate line.(àƒÜÍúÿÿÿÿ
+=
+java:S1659""Declare "city" on a separate line.(àƒÜÍúÿÿÿÿ
+@
+java:S1659"%Declare "address" on a separate line.(àƒÜÍúÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¦¶†Öúÿÿÿÿ
+B
+java:S1948"'Make "movie" transient or serializable.(Û§®Şıÿÿÿÿ
+B
+java:S1948"'Make "shift" transient or serializable.(ß†¬ûÿÿÿÿ
+>
+java:S1659"#Declare "phone" on a separate line.(àƒÜÍúÿÿÿÿ
+D
+java:S1659")Declare "shiftLength" on a separate line.(àƒÜÍúÿÿÿÿ
+D
+java:S1948$"/Make "changeHandler" transient or serializable.(£™Ùu
+@
+java:S1948"+Make "staffRepo" transient or serializable.(¬«ø
+>
+java:S1659"#Declare "genre" on a separate line.(àƒÜÍúÿÿÿÿ
+?
+java:S1659"$Declare "length" on a separate line.(àƒÜÍúÿÿÿÿ
+F
+java:S1948"+Make "shiftRepo" transient or serializable.(û¤ÛÓıÿÿÿÿ
+A
+java:S1948"+Make "connector" transient or serializable.(½ó±ˆ
+>
+java:S1659"#Declare "email" on a separate line.(àƒÜÍúÿÿÿÿ
