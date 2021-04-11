@@ -1,6 +1,6 @@
 package com.example.Biografen.security;
 
-import com.example.Biografen.Views.LoginView;
+import com.example.Biografen.Views.login.LoginView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.server.ServiceInitEvent;

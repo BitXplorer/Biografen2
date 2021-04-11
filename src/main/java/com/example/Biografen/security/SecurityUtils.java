@@ -11,18 +11,23 @@ import java.util.stream.Stream;
 
 public class SecurityUtils {
 
-    private SecurityUtils() {}
+    private SecurityUtils() {
+        // Util methods only
+    }
 
     static boolean isFrameworkInternalRequest(HttpServletRequest request) {
-        final String parameter = request.getParameter(ApplicationConstants.REQUEST_TYPE_PARAMETER);
-        return parameter != null &&
-                Stream.of(RequestType.values()).anyMatch(r -> r.getIdentifier().equals(parameter));
+        final String parameterValue = request.getParameter(ApplicationConstants.REQUEST_TYPE_PARAMETER);
+        return parameterValue != null &&
+                Stream.of(RequestType.values())
+                        .anyMatch(r -> r.getIdentifier().equals(parameterValue));
     }
 
     static boolean isUserLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         boolean isLoggedIn = false;
-        if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated()) {
+        if (authentication != null
+                && !(authentication instanceof AnonymousAuthenticationToken)
+                && authentication.isAuthenticated()) {
             isLoggedIn = true;
         }
         return isLoggedIn;

@@ -23,38 +23,74 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
+
+                // Register our CoustomRequestCash, that saves unauthorized access and
+                // the user is redirected after login.
                 .requestCache().requestCache(new CustomRequestCache())
+
+                // Restrict access to our application.
                 .and().authorizeRequests()
+
+                // Allow all Vaadin internal requests.
                 .requestMatchers(SecurityUtils::isFrameworkInternalRequest).permitAll()
 
+                // Allow all requests by logged in users.
                 .anyRequest().authenticated()
 
+                // Configure the login page.
                 .and().formLogin()
-                .loginPage(LOGIN_URL).permitAll()
-                .loginProcessingUrl(LOGIN_PROCESSING_URL)
-                .failureUrl(LOGIN_FAILURE_URL)
-                .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL);
+                        .loginPage(LOGIN_URL).permitAll()
+                        .loginProcessingUrl(LOGIN_PROCESSING_URL)
+                        .failureUrl(LOGIN_FAILURE_URL)
+
+                        // Configure logout.
+                        .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL);
     }
 
+    //TODO - Fix to use with MySQL.
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withUsername("user").password("{noop}password").roles("USER").build();
+        UserDetails user =
+                User.withUsername("user")
+                        .password("{noop}password")
+                        .roles("USER")
+                        .build();
+
         return new InMemoryUserDetailsManager(user);
     }
 
     @Override
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers(
+                // Vaadin static resources
                 "/VAADIN/**",
+
+                // the standard favicon URI
                 "/favicon.ico",
+
+                // the robots exclusion standard
                 "/robots.txt",
+
+                // web application manifest
                 "/manifest.webmanifest",
                 "/sw.js",
                 "/offline.html",
+
+                // Icon and images
                 "/icons/**",
                 "/images/**",
                 "/styles/**",
-                "/h2-console/**");
+
+                // (development mode) static resources
+                "/frontend/**",
+
+                "/mysql/**",
+
+                // (development mode) H2 debuging console
+                "/h2-console/**",
+
+                // (production mode) static resources
+                "/frontend-es5/**", "/frontend-es6/**");
     }
 }

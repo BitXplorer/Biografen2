@@ -1,4 +1,4 @@
-package com.example.Biografen.Views;
+package com.example.Biografen.Views.login;
 
 
 import com.vaadin.flow.component.html.H1;
@@ -9,28 +9,37 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import java.util.Collections;
+
 @Route("login")
-@PageTitle("Login - Newton Cinema")
+@PageTitle("Login | Newton Cinema")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
-    private LoginForm loginForm = new LoginForm();
+    private LoginForm login = new LoginForm();
 
 
     public LoginView() {
         addClassName("login-view");
         setSizeFull();
+
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
 
-        loginForm.setAction("login");
+        login.setAction("login");
 
-        add(new H1("Newton Cinema"), loginForm);
+        add(
+                new H1("Newton Cinema"),
+                login);
     }
 
     @Override
     public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-        if (beforeEnterEvent.getLocation().getQueryParameters().getParameters().containsKey("error")) {
-            loginForm.setEnabled(true);
+        if (!beforeEnterEvent.getLocation()
+                .getQueryParameters()
+                .getParameters()
+                .getOrDefault("error", Collections.emptyList())
+                .isEmpty()) {
+            login.setEnabled(true);
         }
     }
 }
