@@ -19,14 +19,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-bom</artifactId>
-			<version>${vaadin.version}</version>
-			<type>pom</type>
-			<scope>import</scope>
-		</dependency>
-
 		<!-- för att köra liveReload-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,12 +50,24 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- tag::security[] -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+	<!-- end::security[] -->
 
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-core</artifactId>
 		</dependency>
 
+		<!-- tag::bom[] -->
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -76,12 +80,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<!-- end::bom[] -->
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.4.3</version>
 			</plugin>
 		</plugins>
 	</build>
