@@ -2,7 +2,8 @@ package com.example.Biografen.Views;
 
 import com.example.Biografen.Editors.StaffEditor;
 import com.example.Biografen.Objects.Staff;
-import com.example.Biografen.Objects.StaffRepo;
+import com.example.Biografen.Objects.StaffRepository;
+import com.example.Biografen.Views.layout.MainLayout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -11,19 +12,21 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.util.StringUtils;
 
-@Route(value = "staff")
+@Route(value = "staff", layout = MainLayout.class)
+@PageTitle("ADMIN Staff | Newton Cinema")
 public class AdminViewStaff  extends VerticalLayout {
 
-    private final StaffRepo Repo;
+    private final StaffRepository Repo;
     final StaffEditor staffEditor;
     final Grid<Staff> Grid;
     final TextField filterFirstNAme, filterLastNAme;
     private final Button addStaff, back;
 
-    public AdminViewStaff(StaffRepo Repo){
+    public AdminViewStaff(StaffRepository Repo){
         this.Repo = Repo;
         this.Grid = new Grid<>(Staff.class);
         this.staffEditor = new StaffEditor(Repo);

@@ -1,7 +1,7 @@
 package com.example.Biografen.Editors;
 
 import com.example.Biografen.Objects.Shift;
-import com.example.Biografen.Objects.ShiftRepo;
+import com.example.Biografen.Objects.ShiftRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
@@ -10,8 +10,8 @@ import java.sql.SQLException;
 
 public class ShiftEditor extends Editor{
 
-    public ShiftEditor (ShiftRepo repo){
-        this.shiftRepo = repo;
+    public ShiftEditor (ShiftRepository repo){
+        this.shiftRepository = repo;
         this.shiftBinder = new Binder<>(Shift.class);
         shiftName = new TextField("shiftName");
         shiftLength = new TextField("shiftLength");
@@ -45,11 +45,11 @@ public class ShiftEditor extends Editor{
     }
 
     void deleteShift(){
-        shiftRepo.delete(shift);
+        shiftRepository.delete(shift);
         changeHandler.onChange();
     }
     void saveShift(String name, String length) throws SQLException {
-        shiftRepo.save(shift);
+        shiftRepository.save(shift);
         connector.callAddShift(name, length);
         changeHandler.onChange();
     }
@@ -60,7 +60,7 @@ public class ShiftEditor extends Editor{
         }
         final boolean persisted = s.getId() != null;
         if (persisted){
-            shift = shiftRepo.findById(shift.getId()).get();
+            shift = shiftRepository.findById(shift.getId()).get();
         }else {
             shift = s;
         }

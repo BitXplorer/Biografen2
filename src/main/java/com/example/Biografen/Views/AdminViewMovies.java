@@ -3,7 +3,8 @@ package com.example.Biografen.Views;
 
 import com.example.Biografen.Editors.MovieEditor;
 import com.example.Biografen.Objects.Movie;
-import com.example.Biografen.Objects.MovieRepo;
+import com.example.Biografen.Objects.MovieRepository;
+import com.example.Biografen.Views.layout.MainLayout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -12,20 +13,22 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.util.StringUtils;
 
 
-@Route(value = "adminMovies")
+@Route(value = "adminMovies", layout = MainLayout.class)
+@PageTitle("ADMIN Movies | Newton Cinema")
 public class AdminViewMovies  extends VerticalLayout {
 
-    private final MovieRepo repo;
+    private final MovieRepository repo;
     final MovieEditor editor;
     final Grid<Movie> grid;
     final TextField filterMovieName;
     private final Button addMovie, back;
 
-    public AdminViewMovies (MovieRepo repo){
+    public AdminViewMovies (MovieRepository repo){
         this.repo = repo;
         this.grid = new Grid<>(Movie.class);
         this.editor = new MovieEditor(repo);
@@ -51,7 +54,9 @@ public class AdminViewMovies  extends VerticalLayout {
         });
 
         //Instantiate and edit new movie
-        addMovie.addClickListener(e-> editor.editMovie(new Movie("",0)));
+        addMovie.addClickListener(e-> {
+            editor.editMovie(new Movie("", 0, ""));
+        });
 
         //Back button
         back.addClickListener(e-> UI.getCurrent().navigate("main"));

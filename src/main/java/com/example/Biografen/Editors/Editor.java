@@ -9,20 +9,36 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.spring.annotation.UIScope;
+import org.springframework.stereotype.Component;
 
+@Component
+@UIScope
 public class Editor extends VerticalLayout implements KeyNotifier {
 
     protected Connector connector;
-    protected  MovieRepo movieRepo;
-    protected StaffRepo staffRepo;
-    protected ShiftRepo shiftRepo;
+    protected MovieRepository movieRepository;
+    protected StaffRepository staffRepository;
+    protected ShiftRepository shiftRepository;
 
     protected Movie movie;
     protected Staff staff;
     protected Shift shift;
 
 
-    TextField movieName, length, genre, firstname, lastName, address, city, postalCode, phone, email, socialSecurityNo,shiftName,shiftLength;
+    TextField movieName,
+            length,
+            genre,
+            firstname,
+            lastName,
+            address,
+            city,
+            postalCode,
+            phone,
+            email,
+            socialSecurityNo,
+            shiftName,
+            shiftLength;
 
     Button save = new Button("Save", VaadinIcon.PLUS.create());
     Button cancel = new Button("Cancel", VaadinIcon.PLUS.create());

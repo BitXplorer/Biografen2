@@ -1,7 +1,7 @@
 package com.example.Biografen.Editors;
 
 import com.example.Biografen.Objects.Staff;
-import com.example.Biografen.Objects.StaffRepo;
+import com.example.Biografen.Objects.StaffRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
@@ -10,8 +10,8 @@ import java.sql.SQLException;
 
 public class StaffEditor extends Editor{
 
-    public StaffEditor (StaffRepo repo){
-        this.staffRepo = repo;
+    public StaffEditor (StaffRepository repo){
+        this.staffRepository = repo;
         this.staffBinder = new Binder<>(Staff.class);
         firstname = new TextField("firstName");
         lastName = new TextField("lastName");
@@ -56,12 +56,12 @@ public class StaffEditor extends Editor{
 
 
     void deleteStaff(){
-        staffRepo.delete(staff);
+        staffRepository.delete(staff);
         changeHandler.onChange();
     }
     void saveStaff (String firstname, String lastName, String address,String city,String postalCode,String phone,
                     String email,String socialSecurityNo) throws SQLException {
-        staffRepo.save(staff);
+        staffRepository.save(staff);
         connector.callAddStaff(firstname, lastName, address, city, postalCode, phone, email, socialSecurityNo);
         changeHandler.onChange();
     }
@@ -72,7 +72,7 @@ public class StaffEditor extends Editor{
         }
         final boolean persisted = s.getId() != null;
         if (persisted){
-            staff = staffRepo.findById(staff.getId()).get();
+            staff = staffRepository.findById(staff.getId()).get();
         }else {
             staff = s;
         }

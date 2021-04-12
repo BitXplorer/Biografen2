@@ -2,7 +2,8 @@ package com.example.Biografen.Views;
 
 import com.example.Biografen.Editors.ShiftEditor;
 import com.example.Biografen.Objects.Shift;
-import com.example.Biografen.Objects.ShiftRepo;
+import com.example.Biografen.Objects.ShiftRepository;
+import com.example.Biografen.Views.layout.MainLayout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -11,19 +12,21 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.util.StringUtils;
 
-@Route(value = "shifts")
+@Route(value = "shifts", layout = MainLayout.class)
+@PageTitle("ADMIN Shifts | Newton Cinema")
 public class AdminViewShifts extends VerticalLayout {
 
-    private final ShiftRepo repo;
+    private final ShiftRepository repo;
     final ShiftEditor editor;
     final Grid<Shift> grid;
     final TextField filterName;
     private final Button addShift, back;
 
-    public AdminViewShifts (ShiftRepo repo){
+    public AdminViewShifts (ShiftRepository repo){
         this.repo = repo;
         this.grid = new Grid<>(Shift.class);
         this.editor = new ShiftEditor(repo);

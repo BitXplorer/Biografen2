@@ -1,19 +1,18 @@
 package com.example.Biografen.Editors;
 
 import com.example.Biografen.Objects.Movie;
-import com.example.Biografen.Objects.MovieRepo;
+import com.example.Biografen.Objects.MovieRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-
 
 import java.sql.SQLException;
 
 
 public class MovieEditor extends Editor{
 
-    public MovieEditor (MovieRepo repo){
-        this.movieRepo = repo;
+    public MovieEditor (MovieRepository repo){
+        this.movieRepository = repo;
         this.movieBinder = new Binder<>(Movie.class);
         movieName = new TextField("Movie name");
         length = new TextField("Length");
@@ -52,11 +51,11 @@ public class MovieEditor extends Editor{
 
 
     void deleteMovie(){
-        movieRepo.delete(movie);
+        movieRepository.delete(movie);
         changeHandler.onChange();
     }
     void saveMovie(String name, String length, String genre) throws SQLException {
-        movieRepo.save(movie);
+        movieRepository.save(movie);
         connector.callAddMovie(name,length,genre);
         changeHandler.onChange();
     }
@@ -67,7 +66,7 @@ public class MovieEditor extends Editor{
         }
         final boolean persisted = m.getId() != null;
         if (persisted){
-            movie = movieRepo.findById(m.getId()).get();
+            movie = movieRepository.findById(m.getId()).get();
         }else {
             movie = m;
         }
@@ -79,6 +78,8 @@ public class MovieEditor extends Editor{
 
         movieName.focus();
     }
+
+
 
 }
 
