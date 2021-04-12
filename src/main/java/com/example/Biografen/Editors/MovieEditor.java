@@ -64,9 +64,9 @@ public class MovieEditor extends Editor{
             setVisible(false);
             return;
         }
-        final boolean persisted = m.getId() != null;
+        final boolean persisted = m.getIdmovies() != null;
         if (persisted){
-            movie = movieRepository.findById(m.getId()).get();
+            movie = movieRepository.findById(m.getIdmovies()).get();
         }else {
             movie = m;
         }

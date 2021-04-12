@@ -39,8 +39,8 @@ public class AdminViewShifts extends VerticalLayout {
         add(grid,actions);
 
         grid.setHeight("300px");
-        grid.setColumns("id","shiftName","shiftLength");
-        grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
+        grid.setColumns("idshifts","name","length");
+        grid.getColumnByKey("idshifts").setWidth("50px").setFlexGrow(0);
 
         //Hook logic
         //Replace listing with filter
@@ -67,7 +67,7 @@ public class AdminViewShifts extends VerticalLayout {
     }
     void listShifts(String filterText){
         if (StringUtils.isEmpty(filterText)){
-            grid.setItems((Shift) repo.findAll());
+            grid.setItems(repo.findAll());
         }
     }
 }

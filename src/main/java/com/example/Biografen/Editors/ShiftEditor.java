@@ -13,8 +13,8 @@ public class ShiftEditor extends Editor{
     public ShiftEditor (ShiftRepository repo){
         this.shiftRepository = repo;
         this.shiftBinder = new Binder<>(Shift.class);
-        shiftName = new TextField("shiftName");
-        shiftLength = new TextField("shiftLength");
+        shiftName = new TextField("Shift Name");
+        shiftLength = new TextField("Shift Length");
 
         add(shiftName,shiftLength, actions);
 
@@ -58,16 +58,18 @@ public class ShiftEditor extends Editor{
             setVisible(false);
             return;
         }
-        final boolean persisted = s.getId() != null;
+        final boolean persisted = s.getIdshifts() != null;
         if (persisted){
-            shift = shiftRepository.findById(shift.getId()).get();
+            shift = shiftRepository.findById(shift.getIdshifts()).get();
         }else {
             shift = s;
         }
         cancel.setVisible(persisted);
 
         shiftBinder.setBean(shift);
+
         setVisible(true);
+
         shiftName.focus();
     }
 }

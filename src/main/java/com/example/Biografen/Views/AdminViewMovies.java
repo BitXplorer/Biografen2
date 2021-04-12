@@ -41,8 +41,8 @@ public class AdminViewMovies  extends VerticalLayout {
         add(actions,grid);
 
         grid.setHeight("300px");
-        grid.setColumns("id","movieName", "movieLength");
-        grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
+        grid.setColumns("idmovies","movieName", "length");
+        grid.getColumnByKey("idmovies").setWidth("50px").setFlexGrow(0);
 
         //Hook logic
         //Replace listing with filter
@@ -55,7 +55,7 @@ public class AdminViewMovies  extends VerticalLayout {
 
         //Instantiate and edit new movie
         addMovie.addClickListener(e-> {
-            editor.editMovie(new Movie("", 0, ""));
+            editor.editMovie(new Movie("", "", ""));
         });
 
         //Back button
@@ -72,7 +72,7 @@ public class AdminViewMovies  extends VerticalLayout {
     }
     void listMovies(String filterText){
         if (StringUtils.isEmpty(filterText)){
-            grid.setItems((Movie) repo.findAll());
+            grid.setItems(repo.findAll());
         }
     }
 
