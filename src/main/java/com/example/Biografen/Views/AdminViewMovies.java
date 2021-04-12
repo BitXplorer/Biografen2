@@ -34,14 +34,15 @@ public class AdminViewMovies  extends VerticalLayout {
         this.editor = new MovieEditor(repo);
         this.filterMovieName = new TextField();
         this.addMovie = new Button("New Movie", VaadinIcon.PLUS.create());
-        this.back = new Button("Back",VaadinIcon.PLUS.create());
+        this.back = new Button("Back",VaadinIcon.HOME.create());
 
         //Build layout
-        HorizontalLayout actions = new HorizontalLayout(filterMovieName,addMovie,back);
+        HorizontalLayout actions = new HorizontalLayout(filterMovieName, addMovie, back);
         add(actions,grid);
 
-        grid.setHeight("300px");
-        grid.setColumns("idmovies","movieName", "length");
+
+        grid.setHeight("400px");
+        grid.setColumns("idmovies", "movieName", "length");
         grid.getColumnByKey("idmovies").setWidth("50px").setFlexGrow(0);
 
         //Hook logic
@@ -53,16 +54,17 @@ public class AdminViewMovies  extends VerticalLayout {
         grid.asSingleSelect().addValueChangeListener(e-> {editor.editMovie(e.getValue());
         });
 
+        //TODO - Kolla mot AdminViewStaff
         //Instantiate and edit new movie
         addMovie.addClickListener(e-> {
             editor.editMovie(new Movie("", "", ""));
         });
 
-        //Back button
-        back.addClickListener(e-> UI.getCurrent().navigate("main"));
+        //Back button | .navigate("") -> Bestämmer till vilken vy man skall gå till.
+        back.addClickListener(e-> UI.getCurrent().navigate(""));
 
         //Listen to changes made by the editor and refresh data
-        editor.setChangeHandler(()->{
+        editor.setChangeHandler(() -> {
             editor.setVisible(false);
             listMovies(filterMovieName.getValue());
         });

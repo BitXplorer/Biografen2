@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface StaffRepository extends JpaRepository<Staff,Integer> {
+public interface StaffRepository extends JpaRepository<Staff,Long> {
     //TODO
     //Lägg till parametrar
     //Connector till SQL databasen

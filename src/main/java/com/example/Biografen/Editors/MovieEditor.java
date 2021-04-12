@@ -8,7 +8,6 @@ import com.vaadin.flow.data.binder.Binder;
 
 import java.sql.SQLException;
 
-
 public class MovieEditor extends Editor{
 
     public MovieEditor (MovieRepository repo){

@@ -29,7 +29,7 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     TextField movieName,
             length,
             genre,
-            firstname,
+            firstName,
             lastName,
             address,
             city,

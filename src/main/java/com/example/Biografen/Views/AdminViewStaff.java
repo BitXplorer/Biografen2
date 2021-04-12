@@ -16,59 +16,59 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.util.StringUtils;
 
-@Route(value = "staff", layout = MainLayout.class)
+@Route(value = "adminStaff", layout = MainLayout.class)
 @PageTitle("ADMIN Staff | Newton Cinema")
 public class AdminViewStaff  extends VerticalLayout {
 
-    private final StaffRepository Repo;
-    final StaffEditor staffEditor;
-    final Grid<Staff> Grid;
-    final TextField filterFirstNAme, filterLastNAme;
+    private final StaffRepository repo;
+    final StaffEditor editor;
+    final Grid<Staff> grid;
+    final TextField filterFirstName, filterLastName;
     private final Button addStaff, back;
 
-    public AdminViewStaff(StaffRepository Repo){
-        this.Repo = Repo;
-        this.Grid = new Grid<>(Staff.class);
-        this.staffEditor = new StaffEditor(Repo);
-        this.filterFirstNAme = new TextField();
-        this.filterLastNAme = new TextField();
+    public AdminViewStaff(StaffRepository repo){
+        this.repo = repo;
+        this.grid = new Grid<>(Staff.class);
+        this.editor = new StaffEditor(repo);
+        this.filterFirstName = new TextField();
+        this.filterLastName = new TextField();
         this.addStaff = new Button("New staff", VaadinIcon.PLUS.create());
-        this.back = new Button("Back", VaadinIcon.PLUS.create());
+        this.back = new Button("Back", VaadinIcon.HOME.create());
 
         //Build layout
-        HorizontalLayout actions = new HorizontalLayout(filterFirstNAme,filterLastNAme,addStaff, back);
-        add(actions, Grid);
+        HorizontalLayout actions = new HorizontalLayout(filterFirstName, filterLastName, addStaff, back);
+        add(actions, grid);
 
-        Grid.setHeight("300px");
-        Grid.setColumns("id","firstName", "lastName","address","city","postalCode","phone","email","socialSecurityNo");
-        Grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
-
-
+        grid.setHeight("400px");
+        grid.setColumns("idstaff", "firstName", "lastName", "address", "city", "postalCode", "phone", "email", "socialSecurityNo");
+        grid.getColumnByKey("idstaff").setWidth("50px").setFlexGrow(0);
 
         //Hook logic
-
         //Replace listing with filter
-        filterFirstNAme.setValueChangeMode(ValueChangeMode.EAGER);
-        filterFirstNAme.addValueChangeListener(e -> listStaff(e.getValue(),1));
-        filterLastNAme.setValueChangeMode(ValueChangeMode.EAGER);
-        filterLastNAme.addValueChangeListener(e -> listStaff(e.getValue(),2));
+        filterFirstName.setValueChangeMode(ValueChangeMode.EAGER);
+        filterFirstName.addValueChangeListener(e -> listStaff(e.getValue(),1));
+        filterLastName.setValueChangeMode(ValueChangeMode.EAGER);
+        filterLastName.addValueChangeListener(e -> listStaff(e.getValue(),2));
 
         //Connect selected staff to editor or hide if none is selected
-        Grid.asSingleSelect().addValueChangeListener(e -> { staffEditor.editStaff(e.getValue());
+        grid.asSingleSelect().addValueChangeListener(e -> { editor.editStaff(e.getValue());
         });
 
+
+        //TODO - Kolla mot AdminViewMoviews
         //instantiate end edit new staff
-        addStaff.addClickListener (e -> staffEditor.editStaff(new Staff("","","","","",
+        addStaff.addClickListener (e -> editor.
+                editStaff(new Staff("","","","","",
                 "","","")));
 
-        //back button
-        back.addClickListener(e -> UI.getCurrent().navigate("main"));
+        //back button | .navigate("") -> Bestämmer till vilken vy man skall gå till.
+        back.addClickListener(e -> UI.getCurrent().navigate(""));
 
         //Listen changes made by the editor, refresh data
-        staffEditor.setChangeHandler(() -> {
-        staffEditor.setVisible(false);
-        listStaff(filterFirstNAme.getValue(),1);
-        listStaff(filterLastNAme.getValue(),2);
+        editor.setChangeHandler(() -> {
+        editor.setVisible(false);
+        listStaff(filterFirstName.getValue(),1);
+        listStaff(filterLastName.getValue(),2);
         });
 
         //Initialize listing
@@ -76,12 +76,12 @@ public class AdminViewStaff  extends VerticalLayout {
     }
     void listStaff(String filterText, int choice){
         if (StringUtils.isEmpty(filterText)){
-            Grid.setItems((Staff) Repo.findAll());
+            grid.setItems(repo.findAll());
         }else {
             if (choice == 1){
-                Grid.setItems(Repo.findByFirstNameStartsWithIgnoreCase(filterText));
+                grid.setItems(repo.findAll());
             }else if (choice == 2){
-                Grid.setItems(Repo.findByLastNameStartsWithIgnoreCase(filterText));
+                grid.setItems(repo.findAll());
             }
         }
     }

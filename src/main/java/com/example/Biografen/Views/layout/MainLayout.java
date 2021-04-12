@@ -37,7 +37,7 @@ public class MainLayout extends AppLayout {
         H1 logo = new H1("Newton Cinema | USER");
         logo.addClassName("logo");
 
-        Anchor logout = new Anchor("/logout",VaadinIcon.SIGN_OUT.create());
+        Anchor logout = new Anchor("/logout",VaadinIcon.EXIT.create());
 
         /*
         Button staff = new Button("Staff", VaadinIcon.PLUS.create());
@@ -70,15 +70,18 @@ public class MainLayout extends AppLayout {
         // Ny länk i hamburger menyn:en
         RouterLink helloWorldLink = new RouterLink("HelloWorld", HelloWorldView.class);
         RouterLink adminViewMoviesLink = new RouterLink("Movies", AdminViewMovies.class);
-        RouterLink movieStatisticsLink = new RouterLink("Movie Statistics", MovieStatisticsView.class);
         RouterLink adminViewShiftsLink = new RouterLink("Shifts", AdminViewShifts.class);
+        RouterLink adminViewStaffLink = new RouterLink("Staff", AdminViewStaff.class);
+        RouterLink movieStatisticsLink = new RouterLink("Movie Statistics", MovieStatisticsView.class);
         RouterLink shiftStatisticsLink = new RouterLink("Shift Statistics", ShiftStatisticsView.class);
 
         addToDrawer(new VerticalLayout(
                 helloWorldLink,
                 adminViewMoviesLink,
-                movieStatisticsLink,
                 adminViewShiftsLink,
-                shiftStatisticsLink));
+                adminViewStaffLink,
+                movieStatisticsLink,
+                shiftStatisticsLink
+        ));
     }
 }

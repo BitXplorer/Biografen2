@@ -13,16 +13,16 @@ public class StaffEditor extends Editor{
     public StaffEditor (StaffRepository repo){
         this.staffRepository = repo;
         this.staffBinder = new Binder<>(Staff.class);
-        firstname = new TextField("firstName");
-        lastName = new TextField("lastName");
-        address = new TextField("address");
-        city = new TextField("city");
-        postalCode = new TextField("postalCode");
-        phone = new TextField("phone");
-        email = new TextField("email");
-        socialSecurityNo = new TextField("socialSecurityNo");
+        firstName = new TextField("First Name");
+        lastName = new TextField("Last Name");
+        address = new TextField("Address");
+        city = new TextField("City");
+        postalCode = new TextField("PostalCode");
+        phone = new TextField("Phone");
+        email = new TextField("Email");
+        socialSecurityNo = new TextField("SocialSecurityNo");
 
-        add(firstname,lastName,address,city,postalCode,phone,email,socialSecurityNo,actions);
+        add(firstName, lastName,address,city, postalCode,phone,email, socialSecurityNo, actions);
 
         staffBinder.bindInstanceFields(this);
         setSpacing(true);
@@ -30,10 +30,11 @@ public class StaffEditor extends Editor{
         save.getElement().getThemeList().add("Primary");
         delete.getElement().getThemeList().add("error");
 
+        //Listener som trycker på "save" om man trycker på enter
         addKeyPressListener(Key.ENTER, e -> {
             try {
-                saveStaff(firstname.toString(),lastName.toString(),address.toString(),
-                        city.toString(),postalCode.toString(),phone.toString(),email.toString(),socialSecurityNo.toString());
+                saveStaff(firstName.toString(), lastName.toString(),address.toString(),
+                        city.toString(), postalCode.toString(),phone.toString(),email.toString(), socialSecurityNo.toString());
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -42,8 +43,8 @@ public class StaffEditor extends Editor{
         //Wire action buttons to save, delete and cancel
         save.addClickListener(e -> {
             try {
-                saveStaff(firstname.toString(),lastName.toString(),address.toString(),
-                        city.toString(),postalCode.toString(),phone.toString(),email.toString(),socialSecurityNo.toString());
+                saveStaff(firstName.toString(), lastName.toString(),address.toString(),
+                        city.toString(), postalCode.toString(),phone.toString(),email.toString(), socialSecurityNo.toString());
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -59,10 +60,10 @@ public class StaffEditor extends Editor{
         staffRepository.delete(staff);
         changeHandler.onChange();
     }
-    void saveStaff (String firstname, String lastName, String address,String city,String postalCode,String phone,
+    void saveStaff (String firstName, String lastName, String address,String city,String postalCode,String phone,
                     String email,String socialSecurityNo) throws SQLException {
         staffRepository.save(staff);
-        connector.callAddStaff(firstname, lastName, address, city, postalCode, phone, email, socialSecurityNo);
+        connector.callAddStaff(firstName, lastName, address, city, postalCode, phone, email, socialSecurityNo);
         changeHandler.onChange();
     }
     public final void editStaff(Staff s){
@@ -70,9 +71,9 @@ public class StaffEditor extends Editor{
             setVisible(false);
             return;
         }
-        final boolean persisted = s.getId() != null;
+        final boolean persisted = s.getIdstaff() != null;
         if (persisted){
-            staff = staffRepository.findById(staff.getId()).get();
+            staff = staffRepository.findById(s.getIdstaff()).get();
         }else {
             staff = s;
         }
@@ -82,6 +83,6 @@ public class StaffEditor extends Editor{
 
         setVisible(true);
 
-        firstname.focus();
+        firstName.focus();
     }
 }
