@@ -5,11 +5,13 @@ import com.example.Biografen.Objects.MovieRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.SQLException;
 
 public class MovieEditor extends Editor{
 
+    @Autowired
     public MovieEditor (MovieRepository repo){
         this.movieRepository = repo;
         this.movieBinder = new Binder<>(Movie.class);
