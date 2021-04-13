@@ -1,4 +1,4 @@
-package com.example.Biografen.Views;
+package com.example.Biografen.Views.AdminViews;
 
 import com.example.Biografen.Editors.ShiftEditor;
 import com.example.Biografen.Objects.Shift;
@@ -15,6 +15,7 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.util.StringUtils;
+
 
 @Route(value = "adminShifts", layout = MainLayout.class)
 @PageTitle("ADMIN Shifts | Newton Cinema")

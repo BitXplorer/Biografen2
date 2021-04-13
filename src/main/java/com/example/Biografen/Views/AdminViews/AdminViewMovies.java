@@ -1,4 +1,4 @@
-package com.example.Biografen.Views;
+package com.example.Biografen.Views.AdminViews;
 
 
 import com.example.Biografen.Editors.MovieEditor;

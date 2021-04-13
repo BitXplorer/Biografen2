@@ -1,4 +1,4 @@
-package com.example.Biografen.Views;
+package com.example.Biografen.Views.AdminViews;
 
 import com.example.Biografen.Editors.StaffEditor;
 import com.example.Biografen.Objects.Staff;
@@ -42,6 +42,7 @@ public class AdminViewStaff  extends VerticalLayout {
         grid.setHeight("400px");
         grid.setColumns("id_staff", "firstName", "lastName", "address", "city", "postalCode", "phone", "email", "shift", "socialSecurityNo");
         grid.getColumnByKey("id_staff").setWidth("50px").setFlexGrow(0);
+
 
         //Hook logic
         //Replace listing with filter

@@ -1,8 +1,14 @@
 package com.example.Biografen.Views.layout;
 
 import com.example.Biografen.Views.*;
+import com.example.Biografen.Views.AdminViews.AdminViewMovies;
+import com.example.Biografen.Views.AdminViews.AdminViewSaloon;
+import com.example.Biografen.Views.AdminViews.AdminViewShifts;
+import com.example.Biografen.Views.AdminViews.AdminViewStaff;
 import com.example.Biografen.Views.statistics.MovieStatisticsView;
+import com.example.Biografen.Views.statistics.SaloonStatisticsView;
 import com.example.Biografen.Views.statistics.ShiftStatisticsView;
+import com.example.Biografen.Views.statistics.StaffStatisticsView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -67,16 +73,24 @@ public class MainLayout extends AppLayout {
         RouterLink adminViewMoviesLink = new RouterLink("Movies", AdminViewMovies.class);
         RouterLink adminViewShiftsLink = new RouterLink("Shifts", AdminViewShifts.class);
         RouterLink adminViewStaffLink = new RouterLink("Staff", AdminViewStaff.class);
+        RouterLink adminViewSaloonLink = new RouterLink("Saloon", AdminViewSaloon.class);
         RouterLink movieStatisticsLink = new RouterLink("Movie Statistics", MovieStatisticsView.class);
         RouterLink shiftStatisticsLink = new RouterLink("Shift Statistics", ShiftStatisticsView.class);
+        RouterLink staffStatisticsLink = new RouterLink("Staff Statistics", StaffStatisticsView.class);
+        RouterLink salonStatisticsLink = new RouterLink("Saloon Statistics", SaloonStatisticsView.class);
 
         addToDrawer(new VerticalLayout(
                 helloWorldLink,
+
                 adminViewMoviesLink,
                 adminViewShiftsLink,
                 adminViewStaffLink,
+                adminViewSaloonLink,
+
                 movieStatisticsLink,
-                shiftStatisticsLink
+                shiftStatisticsLink,
+                staffStatisticsLink,
+                salonStatisticsLink
         ));
     }
 }

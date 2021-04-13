@@ -20,10 +20,12 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     protected MovieRepository movieRepository;
     protected StaffRepository staffRepository;
     protected ShiftRepository shiftRepository;
+    protected SaloonRepository saloonRepository;
 
     protected Movie movie;
     protected Staff staff;
     protected Shift shift;
+    protected Saloon saloon;
 
 
     TextField movieName,
@@ -38,7 +40,9 @@ public class Editor extends VerticalLayout implements KeyNotifier {
             email,
             socialSecurityNo,
             shiftName,
-            shiftLength;
+            shiftLength,
+            saloonName,
+            saloonSeats;
 
     Button save = new Button("Save", VaadinIcon.PLUS.create());
     Button cancel = new Button("Cancel", VaadinIcon.PLUS.create());
@@ -48,6 +52,7 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     Binder<Movie> movieBinder;
     Binder<Staff> staffBinder;
     Binder<Shift> shiftBinder;
+    Binder<Saloon> saloonBinder;
 
     protected ChangeHandler changeHandler;
 
