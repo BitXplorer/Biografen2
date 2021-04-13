@@ -58,9 +58,9 @@ public class ShiftEditor extends Editor{
             setVisible(false);
             return;
         }
-        final boolean persisted = s.getIdshifts() != null;
+        final boolean persisted = s.getId_shifts() != null;
         if (persisted){
-            shift = shiftRepository.findById(shift.getIdshifts()).get();
+            shift = shiftRepository.findById(shift.getId_shifts()).get();
         }else {
             shift = s;
         }

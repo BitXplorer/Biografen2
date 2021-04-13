@@ -39,8 +39,8 @@ public class AdminViewShifts extends VerticalLayout {
         add(actions, grid);
 
         grid.setHeight("300px");
-        grid.setColumns("idshifts","name","length");
-        grid.getColumnByKey("idshifts").setWidth("50px").setFlexGrow(0);
+        grid.setColumns("id_shifts","name","length");
+        grid.getColumnByKey("id_shifts").setWidth("50px").setFlexGrow(0);
 
         //Hook logic
         //Replace listing with filter

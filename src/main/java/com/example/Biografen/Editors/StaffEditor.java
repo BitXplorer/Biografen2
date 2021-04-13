@@ -71,9 +71,9 @@ public class StaffEditor extends Editor{
             setVisible(false);
             return;
         }
-        final boolean persisted = s.getIdstaff() != null;
+        final boolean persisted = s.getId_staff() != null;
         if (persisted){
-            staff = staffRepository.findById(s.getIdstaff()).get();
+            staff = staffRepository.findById(s.getId_staff()).get();
         }else {
             staff = s;
         }

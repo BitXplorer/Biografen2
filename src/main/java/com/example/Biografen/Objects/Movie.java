@@ -11,7 +11,7 @@ public class Movie {
 
     @Id
     @GeneratedValue
-    private Long idmovies;
+    private Long id_movies;
     private String name;
     private String length;
     private String genre;
@@ -24,7 +24,7 @@ public class Movie {
         this.length = length;
         this.genre = genre;
     }
-    public Long getIdmovies(){return idmovies;}
+    public Long getId_movies(){return id_movies;}
 
     public String getMovieName(){return name;}
 
@@ -40,6 +40,6 @@ public class Movie {
 
     @Override
     public String toString(){
-        return String.format("Movie[id=%d, movieName='%s', length=%d]", idmovies, name, length);
+        return String.format("Movie[id=%d, movieName='%s', length=%d]", id_movies, name, length);
     }
 }
