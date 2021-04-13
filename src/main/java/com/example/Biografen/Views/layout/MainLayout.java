@@ -41,25 +41,13 @@ public class MainLayout extends AppLayout {
         Button cart = new Button("",VaadinIcon.CART.create());
         Button home = new Button("",VaadinIcon.HOME.create());
 
-        Anchor logout = new Anchor("/logout",VaadinIcon.EXIT.create());
-
-        /*
-        Button staff = new Button("Staff", VaadinIcon.PLUS.create());
-        Button movies = new Button("Movies",VaadinIcon.PLUS.create());
-        Button salong = new Button("Salong",VaadinIcon.PLUS.create());
-
-        //buttonListeners
-        staff.addClickListener(e -> UI.getCurrent().navigate("staff"));
-        movies.addClickListener(e -> UI.getCurrent().navigate("movies"));
-        salong.addClickListener(e -> UI.getCurrent().navigate("salong"));
-
-         */
+        Anchor logout = new Anchor("logout",VaadinIcon.EXIT.create());
 
         HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), home, logo, cart, logout);
 
         header.expand(logo);
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
-        header.setWidth("100");
+        header.setWidth("100%");
         header.addClassName("header");
 
         // | .navigate("") -> Bestämmer till vilken vy man skall gå till.
