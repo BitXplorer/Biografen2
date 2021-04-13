@@ -10,6 +10,6 @@ public interface StaffRepository extends JpaRepository<Staff,Long> {
     //Lägg till parametrar
     //Connector till SQL databasen
     //Plocka ut parametrar från databasen
-    List<Staff> findByFirstNameStartsWithIgnoreCase (String firstName);
-    List<Staff> findByLastNameStartsWithIgnoreCase (String lastName);
+    List<Staff> findByFirstNameStartsWithIgnoreCase (String FirstName);
+    List<Staff> findByLastNameStartsWithIgnoreCase (String LastName);
 }

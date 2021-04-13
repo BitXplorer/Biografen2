@@ -3,7 +3,9 @@ package com.example.Biografen.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "Movie")
 @Entity
 public class Movie {
 

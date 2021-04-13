@@ -72,16 +72,16 @@ public class AdminViewStaff  extends VerticalLayout {
         });
 
         //Initialize listing
-        listStaff(null,0);
+        listStaff(null,2);
     }
     void listStaff(String filterText, int choice){
         if (StringUtils.isEmpty(filterText)){
             grid.setItems(repo.findAll());
         }else {
             if (choice == 1){
-                grid.setItems(repo.findAll());
+                grid.setItems(repo.findByFirstNameStartsWithIgnoreCase(filterText));
             }else if (choice == 2){
-                grid.setItems(repo.findAll());
+                grid.setItems(repo.findByLastNameStartsWithIgnoreCase(filterText));
             }
         }
     }

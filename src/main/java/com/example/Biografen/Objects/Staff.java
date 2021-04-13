@@ -1,46 +1,53 @@
 package com.example.Biografen.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Table(name = "staff", schema = "cinema")
 @Entity
+
 public class Staff {
 
     @Id
     @GeneratedValue
     private Long idstaff;
+    @Column(name="FirstName")
     private String firstName;
+    @Column(name="LastName")
     private String lastName;
+    @Column(name="Address")
     private String address;
+    @Column(name="City")
     private String city;
 
     //TODO - ev sätt postalCode till | private Integer alt | int
+    @Column(name="PostalCode")
     private String postalCode;
+    @Column(name="Phone")
     private String phone;
+    @Column(name = "Email", unique = true)
     private String email;
+    @Column(name="SocialSecurityNo")
     private String socialSecurityNo;
-
     protected Staff(){
     }
 
 
-    public Staff(String firstName,
-                 String lastName,
-                 String address,
-                 String city,
-                 String postalCode,
-                 String phone,
-                 String email,
-                 String socialSecurityNo) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.phone = phone;
-        this.email = email;
-        this.socialSecurityNo = socialSecurityNo;
+    public Staff(String FirstName,
+                 String LastName,
+                 String Address,
+                 String City,
+                 String PostalCode,
+                 String Phone,
+                 String Email,
+                 String SocialSecurityNo) {
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.address = Address;
+        this.city = City;
+        this.postalCode = PostalCode;
+        this.phone = Phone;
+        this.email = Email;
+        this.socialSecurityNo = SocialSecurityNo;
     }
 
 
@@ -83,15 +90,9 @@ public class Staff {
 
     @Override
     public String toString() {
-        return  "Staff | " +
-                idstaff + " _ " +
-                firstName + " - " +
-                lastName + " - " +
-                address + " - " +
-                city + " - " +
-                postalCode + " - " +
-                phone + " - " +
-                email + " - " +
-                socialSecurityNo + " |";
+        return String.format("Staff[id=%d, firstName='%s', lastName='%s', adress='%s', city='%s', " +
+                "postalCode='%s', phone='%s', email='%s', socialSecurityNo='%s]",idstaff,firstName,lastName,
+                address,city,postalCode,phone,email,socialSecurityNo);
+
     }
 }
