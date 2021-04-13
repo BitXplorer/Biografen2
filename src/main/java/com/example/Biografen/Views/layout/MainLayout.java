@@ -64,7 +64,7 @@ public class MainLayout extends AppLayout {
 
         // | .navigate("") -> Bestämmer till vilken vy man skall gå till.
         home.addClickListener(e-> UI.getCurrent().navigate(""));
-        cart.addClickListener(e-> UI.getCurrent().navigate(""));
+        cart.addClickListener(e-> UI.getCurrent().navigate("cart"));
 
         addToNavbar(header);
     }
