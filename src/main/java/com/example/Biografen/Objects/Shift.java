@@ -9,7 +9,7 @@ public class Shift {
 
     @Id
     @GeneratedValue
-    private Long idshifts;
+    private Long id_shifts;
     private String name;
     private String length;
 
@@ -21,8 +21,8 @@ public class Shift {
         this.length = length;
     }
 
-    public Long getIdshifts() {
-        return idshifts;
+    public Long getId_shifts() {
+        return id_shifts;
     }
 
     public String getName(){return name;}
@@ -35,7 +35,7 @@ public class Shift {
 
     @Override
     public String toString(){
-        return String.format("Shift[id=%d, name='%s', length='%s'", idshifts, name, length);
+        return String.format("Shift[id=%d, name='%s', length='%s'", id_shifts, name, length);
     }
 
 }

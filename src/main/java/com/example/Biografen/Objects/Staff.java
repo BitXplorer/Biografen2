@@ -9,7 +9,8 @@ public class Staff {
 
     @Id
     @GeneratedValue
-    private Long idstaff;
+    @Column (name = "id_staff")
+    private Long id_staff;
     @Column(name="FirstName")
     private String firstName;
     @Column(name="LastName")
@@ -26,6 +27,8 @@ public class Staff {
     private String phone;
     @Column(name = "Email", unique = true)
     private String email;
+    @Column(name="Shifts_idShifts")
+    private String shift;
     @Column(name="SocialSecurityNo")
     private String socialSecurityNo;
     protected Staff(){
@@ -39,6 +42,7 @@ public class Staff {
                  String PostalCode,
                  String Phone,
                  String Email,
+                 String Shift,
                  String SocialSecurityNo) {
         this.firstName = FirstName;
         this.lastName = LastName;
@@ -47,11 +51,12 @@ public class Staff {
         this.postalCode = PostalCode;
         this.phone = Phone;
         this.email = Email;
+        this.shift = Shift;
         this.socialSecurityNo = SocialSecurityNo;
     }
 
 
-    public Long getIdstaff(){return idstaff;}
+    public Long getId_staff(){return id_staff;}
 
     public String getFirstName() {
         return firstName;
@@ -69,6 +74,8 @@ public class Staff {
 
     public String getEmail() { return email; }
 
+    public String getShift() { return shift; }
+
     public String getSocialSecurityNo() { return socialSecurityNo; }
 
     public void setFirstName(String firstName) { this.firstName = firstName; }
@@ -85,14 +92,16 @@ public class Staff {
 
     public void setEmail(String email) { this.email = email; }
 
+    public void setShift(String shift) {this.shift = shift; }
+
     public void setSocialSecurityNo(String socialSecurityNo) { this.socialSecurityNo = socialSecurityNo; }
 
 
     @Override
     public String toString() {
         return String.format("Staff[id=%d, firstName='%s', lastName='%s', adress='%s', city='%s', " +
-                "postalCode='%s', phone='%s', email='%s', socialSecurityNo='%s]",idstaff,firstName,lastName,
-                address,city,postalCode,phone,email,socialSecurityNo);
+                "postalCode='%s', phone='%s', email='%s', shift='%s', socialSecurityNo='%s]", id_staff,firstName,lastName,
+                address,city,postalCode,phone,email, shift, socialSecurityNo);
 
     }
 }

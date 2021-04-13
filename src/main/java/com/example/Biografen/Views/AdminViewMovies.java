@@ -42,8 +42,8 @@ public class AdminViewMovies  extends VerticalLayout {
 
 
         grid.setHeight("400px");
-        grid.setColumns("idmovies", "movieName", "length");
-        grid.getColumnByKey("idmovies").setWidth("50px").setFlexGrow(0);
+        grid.setColumns("id_movies", "movieName", "length");
+        grid.getColumnByKey("id_movies").setWidth("50px").setFlexGrow(0);
 
         //Hook logic
         //Replace listing with filter

@@ -40,8 +40,8 @@ public class AdminViewStaff  extends VerticalLayout {
         add(actions, grid);
 
         grid.setHeight("400px");
-        grid.setColumns("idstaff", "firstName", "lastName", "address", "city", "postalCode", "phone", "email", "socialSecurityNo");
-        grid.getColumnByKey("idstaff").setWidth("50px").setFlexGrow(0);
+        grid.setColumns("id_staff", "firstName", "lastName", "address", "city", "postalCode", "phone", "email", "shift", "socialSecurityNo");
+        grid.getColumnByKey("id_staff").setWidth("50px").setFlexGrow(0);
 
         //Hook logic
         //Replace listing with filter
@@ -59,7 +59,7 @@ public class AdminViewStaff  extends VerticalLayout {
         //instantiate end edit new staff
         addStaff.addClickListener (e -> editor.
                 editStaff(new Staff("","","","","",
-                "","","")));
+                "","","", "")));
 
         //back button | .navigate("") -> Bestämmer till vilken vy man skall gå till.
         back.addClickListener(e -> UI.getCurrent().navigate(""));
