@@ -3,8 +3,10 @@ package com.example.Biografen.Views.layout;
 import com.example.Biografen.Views.*;
 import com.example.Biografen.Views.statistics.MovieStatisticsView;
 import com.example.Biografen.Views.statistics.ShiftStatisticsView;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
@@ -36,6 +38,8 @@ public class MainLayout extends AppLayout {
     private void createHeader() {
         H1 logo = new H1("Newton Cinema | USER");
         logo.addClassName("logo");
+        Button cart = new Button("",VaadinIcon.CART.create());
+        Button home = new Button("",VaadinIcon.HOME.create());
 
         Anchor logout = new Anchor("/logout",VaadinIcon.EXIT.create());
 
@@ -51,13 +55,16 @@ public class MainLayout extends AppLayout {
 
          */
 
-        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), logo, logout);
+        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), home, logo, cart, logout);
 
         header.expand(logo);
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         header.setWidth("100");
         header.addClassName("header");
 
+        // | .navigate("") -> Bestämmer till vilken vy man skall gå till.
+        home.addClickListener(e-> UI.getCurrent().navigate(""));
+        cart.addClickListener(e-> UI.getCurrent().navigate(""));
 
         addToNavbar(header);
     }
