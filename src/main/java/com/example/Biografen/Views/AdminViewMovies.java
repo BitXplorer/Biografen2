@@ -70,10 +70,12 @@ public class AdminViewMovies  extends VerticalLayout {
         });
 
         //Initialize listing
-        listMovies("");
+        listMovies(null);
     }
     void listMovies(String filterText){
         if (StringUtils.isEmpty(filterText)){
+            grid.setItems(repo.findAll());
+        }else {
             grid.setItems(repo.findByNameStartsWithIgnoreCase(filterText));
         }
     }
