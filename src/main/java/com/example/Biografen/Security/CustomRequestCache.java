@@ -1,4 +1,4 @@
-package com.example.Biografen.security;
+package com.example.Biografen.Security;
 
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 

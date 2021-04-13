@@ -31,13 +31,15 @@ public class AdminViewShifts extends VerticalLayout {
         this.repo = repo;
         this.grid = new Grid<>(Shift.class);
         this.editor = new ShiftEditor(repo);
-        this.filterShiftName = new TextField();
+        this.filterShiftName = new TextField("Filter by name");
         this.addShift = new Button("New Shift", VaadinIcon.PLUS.create());
         this.back = new Button("Back", VaadinIcon.HOME.create());
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterShiftName, addShift, back);
         add(actions, grid);
+        actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
+
 
         grid.setHeight("300px");
         grid.setColumns("id_shifts","name","length");
@@ -69,6 +71,8 @@ public class AdminViewShifts extends VerticalLayout {
     void listShifts(String filterText){
         if (StringUtils.isEmpty(filterText)){
             grid.setItems(repo.findAll());
+        }else {
+            grid.setItems(repo.findByNameStartsWithIgnoreCase(filterText));
         }
     }
 }

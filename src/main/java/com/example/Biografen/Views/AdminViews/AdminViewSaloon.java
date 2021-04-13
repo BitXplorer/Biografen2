@@ -32,13 +32,14 @@ public class AdminViewSaloon extends VerticalLayout {
         this.repo = repo;
         this.grid = new Grid<>(Saloon.class);
         this.editor = new SaloonEditor(repo);
-        this.filterSaloonName = new TextField();
+        this.filterSaloonName = new TextField("Filter by name");
         this.addSaloon = new Button("New Saloon", VaadinIcon.PLUS.create());
         this.back = new Button("Back",VaadinIcon.HOME.create());
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterSaloonName, addSaloon, back);
         add(actions,grid);
+        actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
         grid.setHeight("400px");
         grid.setColumns("id_saloon", "saloonName", "seats");
@@ -73,7 +74,8 @@ public class AdminViewSaloon extends VerticalLayout {
     void listSaloon(String filterText){
         if (StringUtils.isEmpty(filterText)){
             grid.setItems(repo.findAll());
+        } else {
+            grid.setItems(repo.findByNameStartsWithIgnoreCase(filterText));
         }
     }
-
 }

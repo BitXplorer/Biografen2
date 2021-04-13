@@ -1,4 +1,4 @@
-package com.example.Biografen.security;
+package com.example.Biografen.Security;
 
 import com.vaadin.flow.server.HandlerHelper.RequestType;
 import com.vaadin.flow.shared.ApplicationConstants;

@@ -1,10 +1,11 @@
 package com.example.Biografen.Views.layout;
 
-import com.example.Biografen.Views.*;
 import com.example.Biografen.Views.AdminViews.AdminViewMovies;
 import com.example.Biografen.Views.AdminViews.AdminViewSaloon;
 import com.example.Biografen.Views.AdminViews.AdminViewShifts;
 import com.example.Biografen.Views.AdminViews.AdminViewStaff;
+import com.example.Biografen.Views.HelloWorldView;
+import com.example.Biografen.Views.MainView;
 import com.example.Biografen.Views.statistics.MovieStatisticsView;
 import com.example.Biografen.Views.statistics.SaloonStatisticsView;
 import com.example.Biografen.Views.statistics.ShiftStatisticsView;
@@ -14,6 +15,7 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -33,6 +35,8 @@ offlineResources = {
         "./images/offline.png"
 },
         enableInstallPrompt = false)
+
+@JsModule("./js/os-theme-switcher.js")
 @CssImport("./styles/shared-styles.css")
 public class MainLayout extends AppLayout {
 
