@@ -27,7 +27,8 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     protected Shift shift;
     protected Saloon saloon;
 
-
+    //TODO:
+    //Flytta över Textfields till respektive klass
     TextField movieName,
             length,
             genre,

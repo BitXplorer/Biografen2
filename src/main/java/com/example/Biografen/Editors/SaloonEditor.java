@@ -75,7 +75,7 @@ public class SaloonEditor extends Editor {
 
         setVisible(true);
 
-        movieName.focus();
+        saloonName.focus();
     }
     
 }

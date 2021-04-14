@@ -62,7 +62,7 @@ public class AdminViewStaff  extends VerticalLayout {
         //instantiate end edit new staff
         addStaff.addClickListener (e -> editor.
                 editStaff(new Staff("","","","","",
-                "","","", "")));
+                "","",null, "")));
 
         //back button | .navigate("") -> Bestämmer till vilken vy man skall gå till.
         back.addClickListener(e -> UI.getCurrent().navigate(""));

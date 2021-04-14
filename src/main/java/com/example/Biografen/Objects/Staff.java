@@ -2,6 +2,7 @@ package com.example.Biografen.Objects;
 
 import javax.persistence.*;
 
+
 @Table(name = "staff", schema = "cinema")
 @Entity
 
@@ -9,7 +10,6 @@ public class Staff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_staff")
     private Long id_staff;
     @Column(name="FirstName")
     private String firstName;
@@ -19,8 +19,6 @@ public class Staff {
     private String address;
     @Column(name="City")
     private String city;
-
-    //TODO - ev sätt postalCode till | private Integer alt | int
     @Column(name="PostalCode")
     private String postalCode;
     @Column(name="Phone")
@@ -28,9 +26,12 @@ public class Staff {
     @Column(name = "Email", unique = true)
     private String email;
     @Column(name="Shifts_idShifts")
-    private String shift;
+    private Integer shift;
     @Column(name="SocialSecurityNo")
     private String socialSecurityNo;
+
+
+
     protected Staff(){
     }
 
@@ -42,7 +43,7 @@ public class Staff {
                  String PostalCode,
                  String Phone,
                  String Email,
-                 String Shift,
+                 Integer Shift,
                  String SocialSecurityNo) {
         this.firstName = FirstName;
         this.lastName = LastName;
@@ -74,7 +75,7 @@ public class Staff {
 
     public String getEmail() { return email; }
 
-    public String getShift() { return shift; }
+    public Integer getShift() { return shift; }
 
     public String getSocialSecurityNo() { return socialSecurityNo; }
 
@@ -92,7 +93,7 @@ public class Staff {
 
     public void setEmail(String email) { this.email = email; }
 
-    public void setShift(String shift) {this.shift = shift; }
+    public void setShift(Integer shift) {this.shift = shift; }
 
     public void setSocialSecurityNo(String socialSecurityNo) { this.socialSecurityNo = socialSecurityNo; }
 

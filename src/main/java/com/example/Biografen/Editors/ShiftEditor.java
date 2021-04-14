@@ -6,11 +6,13 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.SQLException;
 
 public class ShiftEditor extends Editor{
 
+    @Autowired
     public ShiftEditor (ShiftRepository repo){
         this.shiftRepository = repo;
         this.shiftBinder = new Binder<>(Shift.class);
@@ -19,10 +21,13 @@ public class ShiftEditor extends Editor{
 
         add(shiftName,shiftLength, actions);
 
+
         shiftBinder.bindInstanceFields(this);
+        shiftBinder.forField(shiftName).bind(Shift::getName,Shift::setName);
+        shiftBinder.forField(shiftLength).bind(Shift::getLength, Shift::setLength);
         setSpacing(true);
 
-        save.getElement().getThemeList().add("Primary");
+        save.getElement().getThemeList().add("primary");
         delete.getElement().getThemeList().add("error");
 
         addKeyPressListener(Key.ENTER, e -> saveCatcher());
