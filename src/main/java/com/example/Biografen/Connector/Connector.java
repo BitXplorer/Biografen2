@@ -9,6 +9,7 @@ public interface Connector {
 
     public Optional <Staff> getPerson (String firstName);
     public void callAddMovie (String name, String length, String genre ) throws SQLException;
+    public void callAddSaloon (String name, String seats ) throws SQLException;
     public void callAddShift (String name, String length ) throws SQLException;
     public void callAddStaff (String firstName,
                               String lastName,

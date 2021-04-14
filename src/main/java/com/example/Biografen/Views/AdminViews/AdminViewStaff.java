@@ -1,4 +1,4 @@
-package com.example.Biografen.Views;
+package com.example.Biografen.Views.AdminViews;
 
 import com.example.Biografen.Editors.StaffEditor;
 import com.example.Biografen.Objects.Staff;
@@ -30,18 +30,21 @@ public class AdminViewStaff  extends VerticalLayout {
         this.repo = repo;
         this.grid = new Grid<>(Staff.class);
         this.editor = new StaffEditor(repo);
-        this.filterFirstName = new TextField();
-        this.filterLastName = new TextField();
+        this.filterFirstName = new TextField("Filter by first name");
+        this.filterLastName = new TextField("Filter by last name");
         this.addStaff = new Button("New staff", VaadinIcon.PLUS.create());
         this.back = new Button("Back", VaadinIcon.HOME.create());
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterFirstName, filterLastName, addStaff, back);
         add(actions, grid);
+        actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
+
 
         grid.setHeight("400px");
         grid.setColumns("id_staff", "firstName", "lastName", "address", "city", "postalCode", "phone", "email", "shift", "socialSecurityNo");
         grid.getColumnByKey("id_staff").setWidth("50px").setFlexGrow(0);
+
 
         //Hook logic
         //Replace listing with filter

@@ -38,7 +38,7 @@ public class AdminViewMovies  extends VerticalLayout {
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterMovieName, addMovie, back);
-        add(actions,grid, editor);
+        add(actions,grid);
 
 
         grid.setHeight("400px");
