@@ -37,7 +37,7 @@ public class AdminViewShifts extends VerticalLayout {
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterShiftName, addShift, back);
-        add(actions, grid);
+        add(actions, grid, editor);
         actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
 

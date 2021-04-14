@@ -5,6 +5,7 @@ import com.example.Biografen.Objects.StaffRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 
 import java.sql.SQLException;
 
@@ -31,39 +32,30 @@ public class StaffEditor extends Editor{
         delete.getElement().getThemeList().add("error");
 
         //Listener som trycker på "save" om man trycker på enter
-        addKeyPressListener(Key.ENTER, e -> {
-            try {
-                saveStaff(firstName.toString(), lastName.toString(),address.toString(),
-                        city.toString(), postalCode.toString(),phone.toString(),email.toString(), socialSecurityNo.toString());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        addKeyPressListener(Key.ENTER, e -> saveCatcher());
 
         //Wire action buttons to save, delete and cancel
-        save.addClickListener(e -> {
-            try {
-                saveStaff(firstName.toString(), lastName.toString(),address.toString(),
-                        city.toString(), postalCode.toString(),phone.toString(),email.toString(), socialSecurityNo.toString());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        save.addClickListener(e -> saveCatcher());
         delete.addClickListener(e-> deleteStaff());
         cancel.addClickListener(e -> editStaff(staff));
         setVisible(false);
     }
 
-
+    void saveCatcher(){
+        try{
+            staffBinder.writeBean(staff);
+            saveStaff(staff);
+        } catch (SQLException | ValidationException throwables){
+            throwables.printStackTrace();
+        }
+    }
 
     void deleteStaff(){
         staffRepository.delete(staff);
         changeHandler.onChange();
     }
-    void saveStaff (String firstName, String lastName, String address,String city,String postalCode,String phone,
-                    String email,String socialSecurityNo) throws SQLException {
+    void saveStaff (Staff staff) throws SQLException {
         staffRepository.save(staff);
-        connector.callAddStaff(firstName, lastName, address, city, postalCode, phone, email, socialSecurityNo);
         changeHandler.onChange();
     }
     public final void editStaff(Staff s){

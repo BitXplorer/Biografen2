@@ -37,7 +37,7 @@ public class AdminViewStaff  extends VerticalLayout {
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterFirstName, filterLastName, addStaff, back);
-        add(actions, grid);
+        add(actions, grid, editor);
         actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
 

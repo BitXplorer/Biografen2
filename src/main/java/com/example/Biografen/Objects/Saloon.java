@@ -29,7 +29,7 @@ public class Saloon {
 
     public String getSeats() { return seats; }
 
-    public void setSeats(String seats) { this.seats = this.seats; }
+    public void setSeats(String seats) { this.seats = seats; }
 
     @Override
     public String toString(){

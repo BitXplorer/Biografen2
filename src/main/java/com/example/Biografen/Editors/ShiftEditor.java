@@ -5,6 +5,7 @@ import com.example.Biografen.Objects.ShiftRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 
 import java.sql.SQLException;
 
@@ -24,27 +25,22 @@ public class ShiftEditor extends Editor{
         save.getElement().getThemeList().add("Primary");
         delete.getElement().getThemeList().add("error");
 
-        addKeyPressListener(Key.ENTER, e -> {
-           try {
-               saveShift(shift);
-           } catch (SQLException throwables){
-               throwables.printStackTrace();
-           }
-        });
+        addKeyPressListener(Key.ENTER, e -> saveCatcher());
 
-        save.addClickListener(e -> {
-            try {
-                saveShift(shift);
-            }catch (SQLException throwables){
-                throwables.printStackTrace();
-            }
-        });
+        save.addClickListener(e -> saveCatcher());
         delete.addClickListener(e-> deleteShift());
         cancel.addClickListener(e-> editShift(shift));
         setVisible(false);
     }
 
-
+    void saveCatcher(){
+        try{
+            shiftBinder.writeBean(shift);
+            saveShift(shift);
+        } catch (SQLException | ValidationException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     void deleteShift(){
         shiftRepository.delete(shift);
