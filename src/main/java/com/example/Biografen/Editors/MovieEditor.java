@@ -30,29 +30,23 @@ public class MovieEditor extends Editor{
         delete.getElement().getThemeList().add("error");
 
         //Listener som trycker på "save" om man trycker på enter
-        addKeyPressListener(Key.ENTER, e -> {
-            try {
-                movieBinder.writeBean(movie);
-                saveMovie(movie);
-            } catch (SQLException | ValidationException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        addKeyPressListener(Key.ENTER, e -> saveCatcher());
 
         //Wire action buttons to save, delete and reset
-        save.addClickListener(e -> {
-            try {
-                movieBinder.writeBean(movie);
-                saveMovie(movie);
-            } catch (SQLException | ValidationException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        save.addClickListener(e -> saveCatcher());
         delete.addClickListener(e-> deleteMovie());
         cancel.addClickListener(e-> editMovie(movie));
         setVisible(false);
     }
 
+    void saveCatcher(){
+        try{
+            movieBinder.writeBean(movie);
+            saveMovie(movie);
+        } catch (SQLException | ValidationException throwables){
+            throwables.printStackTrace();
+        }
+    }
 
     void deleteMovie(){
         movieRepository.delete(movie);
