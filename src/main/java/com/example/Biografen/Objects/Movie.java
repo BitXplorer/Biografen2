@@ -1,16 +1,13 @@
 package com.example.Biografen.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "Movie")
 @Entity
 public class Movie {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_movies;
     private String name;
     private String length;
@@ -32,7 +29,7 @@ public class Movie {
 
     public String getLength(){return length;}
 
-    public void setLength(String length){this.length = this.length;}
+    public void setLength(String length){this.length = length;}
 
     public String getGenre() {return genre;}
 

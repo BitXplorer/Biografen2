@@ -1,14 +1,13 @@
 package com.example.Biografen.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Table(name = "shift")
 @Entity
 public class Shift {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_shifts;
     private String name;
     private String length;

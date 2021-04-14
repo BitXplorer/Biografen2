@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Staff {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id_staff")
     private Long id_staff;
     @Column(name="FirstName")

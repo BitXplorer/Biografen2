@@ -26,7 +26,7 @@ public class ShiftEditor extends Editor{
 
         addKeyPressListener(Key.ENTER, e -> {
            try {
-               saveShift(shiftName.toString(), shiftLength.toString());
+               saveShift(shift);
            } catch (SQLException throwables){
                throwables.printStackTrace();
            }
@@ -34,7 +34,7 @@ public class ShiftEditor extends Editor{
 
         save.addClickListener(e -> {
             try {
-                saveShift(shiftName.toString(), shiftLength.toString());
+                saveShift(shift);
             }catch (SQLException throwables){
                 throwables.printStackTrace();
             }
@@ -44,13 +44,14 @@ public class ShiftEditor extends Editor{
         setVisible(false);
     }
 
+
+
     void deleteShift(){
         shiftRepository.delete(shift);
         changeHandler.onChange();
     }
-    void saveShift(String name, String length) throws SQLException {
+    void saveShift(Shift shift) throws SQLException {
         shiftRepository.save(shift);
-        connector.callAddShift(name, length);
         changeHandler.onChange();
     }
     public final void editShift(Shift s){
