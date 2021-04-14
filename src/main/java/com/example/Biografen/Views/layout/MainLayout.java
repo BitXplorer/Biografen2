@@ -1,6 +1,6 @@
 package com.example.Biografen.Views.layout;
 
-import com.example.Biografen.Views.AdminViewMovies;
+import com.example.Biografen.Views.AdminViews.AdminViewMovies;
 import com.example.Biografen.Views.AdminViews.AdminViewSaloon;
 import com.example.Biografen.Views.AdminViews.AdminViewShifts;
 import com.example.Biografen.Views.AdminViews.AdminViewStaff;
