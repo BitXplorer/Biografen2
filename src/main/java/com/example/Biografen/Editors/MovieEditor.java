@@ -12,6 +12,8 @@ import java.sql.SQLException;
 
 public class MovieEditor extends Editor{
 
+    TextField movieName, length, genre;
+
     @Autowired
     public MovieEditor (MovieRepository repo){
         this.movieRepository = repo;

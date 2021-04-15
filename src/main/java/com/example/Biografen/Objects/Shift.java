@@ -8,6 +8,7 @@ public class Shift {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_shifts")
     private Long id_shifts;
     private String name;
     private String length;

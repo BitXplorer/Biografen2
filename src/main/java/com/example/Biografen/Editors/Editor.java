@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @UIScope
 public class Editor extends VerticalLayout implements KeyNotifier {
 
-    protected Connector connector;
+
     protected MovieRepository movieRepository;
     protected StaffRepository staffRepository;
     protected ShiftRepository shiftRepository;
@@ -27,23 +27,6 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     protected Shift shift;
     protected Saloon saloon;
 
-    //TODO:
-    //Flytta över Textfields till respektive klass
-    TextField movieName,
-            length,
-            genre,
-            firstName,
-            lastName,
-            address,
-            city,
-            postalCode,
-            phone,
-            email,
-            socialSecurityNo,
-            shiftName,
-            shiftLength,
-            saloonName,
-            saloonSeats;
 
     Button save = new Button("Save", VaadinIcon.PLUS.create());
     Button cancel = new Button("Cancel", VaadinIcon.PLUS.create());

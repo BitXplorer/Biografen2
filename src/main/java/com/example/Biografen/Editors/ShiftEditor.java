@@ -12,19 +12,21 @@ import java.sql.SQLException;
 
 public class ShiftEditor extends Editor{
 
+    TextField name, length;
+
     @Autowired
     public ShiftEditor (ShiftRepository repo){
         this.shiftRepository = repo;
         this.shiftBinder = new Binder<>(Shift.class);
-        shiftName = new TextField("Shift Name");
-        shiftLength = new TextField("Shift Length");
+        name = new TextField("Shift Name");
+        length = new TextField("Shift Length");
 
-        add(shiftName,shiftLength, actions);
+        add(name,length, actions);
 
 
-        shiftBinder.bindInstanceFields(this);
-        shiftBinder.forField(shiftName).bind(Shift::getName,Shift::setName);
-        shiftBinder.forField(shiftLength).bind(Shift::getLength, Shift::setLength);
+        //shiftBinder.bindInstanceFields(shift);
+        shiftBinder.forField(name).bind(Shift::getName,Shift::setName);
+        shiftBinder.forField(length).bind(Shift::getLength, Shift::setLength);
         setSpacing(true);
 
         save.getElement().getThemeList().add("primary");
@@ -72,6 +74,6 @@ public class ShiftEditor extends Editor{
 
         setVisible(true);
 
-        shiftName.focus();
+        name.focus();
     }
 }

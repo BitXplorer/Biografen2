@@ -11,6 +11,15 @@ import java.sql.SQLException;
 
 public class StaffEditor extends Editor{
 
+    TextField firstName,
+            lastName,
+            address,
+            city,
+            postalCode,
+            phone,
+            email,
+            socialSecurityNo;
+
     public StaffEditor (StaffRepository repo){
         this.staffRepository = repo;
         this.staffBinder = new Binder<>(Staff.class);
