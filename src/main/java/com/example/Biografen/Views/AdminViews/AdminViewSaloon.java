@@ -38,7 +38,7 @@ public class AdminViewSaloon extends VerticalLayout {
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterSaloonName, addSaloon, back);
-        add(actions,grid);
+        add(actions,grid, editor);
         actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
         grid.setHeight("400px");

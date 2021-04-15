@@ -5,20 +5,23 @@ import com.example.Biografen.Objects.SaloonRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 
 import java.sql.SQLException;
 
 public class SaloonEditor extends Editor {
 
+    TextField saloonName, seats;
+
     public SaloonEditor (SaloonRepository repo){
         this.saloonRepository = repo;
         this.saloonBinder = new Binder<>(Saloon.class);
         saloonName = new TextField("Saloon name");
-        saloonSeats = new TextField("Seats");
+        seats = new TextField("Seats");
 
 
         //Lägger till knapparna
-        add(saloonName, saloonSeats, actions);
+        add(saloonName, seats, actions);
 
 
         //TODO  - Kolla Kolla saloonBinder
@@ -29,27 +32,23 @@ public class SaloonEditor extends Editor {
         delete.getElement().getThemeList().add("error");
 
         //Listener som trycker på "save" om man trycker på enter
-        addKeyPressListener(Key.ENTER, e -> {
-            try {
-                saveSaloon(saloonName.toString(),saloonSeats.toString());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        addKeyPressListener(Key.ENTER, e -> saveCatcher());
 
         //Wire action buttons to save, delete and reset
-        save.addClickListener(e -> {
-            try {
-                saveSaloon(saloonName.toString(),saloonSeats.toString());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        save.addClickListener(e -> saveCatcher());
         delete.addClickListener(e-> deleteSaloon());
         cancel.addClickListener(e-> editSaloon(saloon));
         setVisible(false);
     }
 
+    void saveCatcher(){
+        try{
+            saloonBinder.writeBean(saloon);
+            saveSaloon(saloon);
+        } catch (SQLException | ValidationException throwables){
+            throwables.printStackTrace();
+        }
+    }
 
     void deleteSaloon(){
         saloonRepository.delete(saloon);
@@ -57,9 +56,8 @@ public class SaloonEditor extends Editor {
     }
 
     // TODO - Fixa procedure för addSaloon i databasen. Ligger en nu men den strular på [MoviesidMovies]
-    void saveSaloon(String name, String seats) throws SQLException {
+    void saveSaloon(Saloon saloon) throws SQLException {
         saloonRepository.save(saloon);
-        connector.callAddSaloon(name,seats);
         changeHandler.onChange();
     }
     public final void editSaloon(Saloon s){
@@ -79,7 +77,7 @@ public class SaloonEditor extends Editor {
 
         setVisible(true);
 
-        movieName.focus();
+        saloonName.focus();
     }
     
 }

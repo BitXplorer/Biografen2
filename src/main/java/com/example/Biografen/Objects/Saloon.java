@@ -2,13 +2,14 @@ package com.example.Biografen.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Saloon {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_saloon;
     private String name;
     private String seats;
@@ -29,10 +30,10 @@ public class Saloon {
 
     public String getSeats() { return seats; }
 
-    public void setSeats(String seats) { this.seats = this.seats; }
+    public void setSeats(String seats) { this.seats = seats; }
 
     @Override
     public String toString(){
-        return String.format("Saloon[id=%d, saloonName='%s', seats=%d]", id_saloon, name, seats);
+        return String.format("Saloon[id=%d, saloonName='%s', seats='%s']", id_saloon, name, seats);
     }
 }

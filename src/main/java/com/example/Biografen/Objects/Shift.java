@@ -8,6 +8,7 @@ public class Shift {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_shifts")
     private Long id_shifts;
     private String name;
     private String length;
@@ -26,7 +27,7 @@ public class Shift {
 
     public String getName(){return name;}
 
-    public void setShiftName(String name){this.name=name;}
+    public void setName(String name){this.name=name;}
 
     public String getLength(){return length;}
 
