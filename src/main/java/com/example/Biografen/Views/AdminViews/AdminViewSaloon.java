@@ -15,11 +15,14 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.StringUtils;
 
 
 @Route(value = "adminSaloon", layout = MainLayout.class)
 @PageTitle("ADMIN Saloon | Newton Cinema")
+@Secured("ROLE_Admin")
 public class AdminViewSaloon extends VerticalLayout {
 
     private final SaloonRepository repo;
@@ -28,6 +31,7 @@ public class AdminViewSaloon extends VerticalLayout {
     final TextField filterSaloonName;
     private final Button addSaloon, back;
 
+    @Autowired
     public AdminViewSaloon (SaloonRepository repo){
         this.repo = repo;
         this.grid = new Grid<>(Saloon.class);

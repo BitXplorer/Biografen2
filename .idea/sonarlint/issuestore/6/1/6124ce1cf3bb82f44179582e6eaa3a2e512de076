@@ -1,3 +1,16 @@
 
-[	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(»¤Ì¦þÿÿÿÿ
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–Õ¨Ü
+]	java:S107&"AConstructor has 9 parameters, which is greater than 7 authorized.(¢Ü²’8‹Š´ÝŒ/
+m	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Ü²’8‹Š´ÝŒ/
+r	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Šàª’ûÿÿÿÿ8‹Š´ÝŒ/
+r	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡ËÙËýÿÿÿÿ8‹Š´ÝŒ/
+r	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¾®´üÿÿÿÿ8‹Š´ÝŒ/
+r	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´ð‚†úÿÿÿÿ8‹Š´ÝŒ/
+r	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ü€³úÿÿÿÿ8‹Š´ÝŒ/
+m	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·©òÍ8‹Š´ÝŒ/
+r	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï¼°þÿÿÿÿÿ8‹Š´ÝŒ/
+l	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÄçd8‹Š´ÝŒ/
+o	java:S116"SRename this field "id_staff" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Õ™»8‹Š´ÝŒ/
+O
+java:S1135"2Complete the task associated to this TODO comment.(­®—¡8‹Š´ÝŒ/
+o	java:S100;"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜ÕžŠúÿÿÿÿ8‹Š´ÝŒ/

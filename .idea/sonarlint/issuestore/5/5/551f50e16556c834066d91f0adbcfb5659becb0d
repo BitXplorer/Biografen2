@@ -1,0 +1,14 @@
+
+O
+java:S1135="2Complete the task associated to this TODO comment.(Î÷§8ÄÜ†İŒ/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Òª‡
+I
+java:S1659",Declare "filterLastName" on a separate line.(Ş–¡ã8º¤ºŒ/
+Q
+java:S1874Q"/Remove this use of "isEmpty"; it is deprecated.(ùÁŒ­ÿÿÿÿÿ8ÄÜ†İŒ/
+?
+java:S1659""Declare "back" on a separate line.(››ï8»›Ãé‹/
+H
+java:S1948"&Make "repo" transient or serializable.(ä‡Æéûÿÿÿÿ8Œœ¥ºŒ/
+N
+java:S16029",Remove useless curly braces around statement(±û¾Ëüÿÿÿÿ8ÄÜ†İŒ/

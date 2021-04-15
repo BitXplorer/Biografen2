@@ -1,0 +1,16 @@
+
+?
+java:S1659""Declare "back" on a separate line.(ï¹õÛ8©»Ö/
+Q
+java:S1874M"/Remove this use of "isEmpty"; it is deprecated.(ùÁŒ­ÿÿÿÿÿ8½¬®ŞŒ/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üïÖ…øÿÿÿÿ
+I
+java:S16027",Remove useless curly braces around statement(ôĞ…Ü8©»Ö/
+T
+java:S1135:"2Complete the task associated to this TODO comment.(îØğàıÿÿÿÿ8©»Ö/
+C
+java:S1948"&Make "repo" transient or serializable.(Óà¿·8©»Ö/
+I
+java:S1602<",Remove useless curly braces around statement(©ªÌæ8–ŒëÜŒ/
+ï
+java:S1598"ÌThis file "AdminViewMovies.java" should be located in "com/example/Biografen/Views" directory, not in "/Users/NorrmanImac/Documents/GitHub/Biografen2/src/main/java/com/example/Biografen/Views/AdminViews".(üïÖ…øÿÿÿÿ8œšù/

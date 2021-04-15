@@ -77,8 +77,4 @@ public class MovieEditor extends Editor{
 
         movieName.focus();
     }
-
-
-
 }
-
