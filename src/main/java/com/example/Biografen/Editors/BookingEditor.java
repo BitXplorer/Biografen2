@@ -21,6 +21,9 @@ public class BookingEditor extends Editor {
         this.phone = new TextField("Phone Number");
         this.email = new TextField("Email");
         this.noOfSeats = new TextField("Number of Seats");
+
+        confirmBookingButton.addClickListener(e -> confirmBooking());
+        add(firstName, lastName, phone, email, noOfSeats, confirmBookingButton);
     }
 
     public void editBooking(Movie selectedMovie) {
@@ -40,6 +43,8 @@ public class BookingEditor extends Editor {
 
         setVisible(true);
     }
+
+    void confirmBooking() {}
 
     private void configureSelectSeats() {}
 
