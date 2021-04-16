@@ -1,5 +1,6 @@
 package com.example.Biografen.Editors;
 
+import com.example.Biografen.Connector.Connector;
 import com.example.Biografen.Objects.Booking;
 import com.example.Biografen.Objects.BookingRepository;
 import com.example.Biografen.Objects.Movie;
@@ -12,13 +13,12 @@ import com.vaadin.flow.data.binder.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BookingEditor extends Editor {
 
-    TextField movieName, firstName, lastName, phone, email, booked_seats;
-   // H3 movieName = new H3();
-    Button confirmBookingButton = new Button("Book Tickets");
-
+    TextField movieName, firstName, lastName, phone, email, time_booked, booked_seats;
 
     @Autowired
     public BookingEditor(MovieRepository movieRepo, BookingRepository bookingRepository) {
@@ -32,7 +32,7 @@ public class BookingEditor extends Editor {
         this.email = new TextField("Email");
         this.booked_seats = new TextField("Number of Seats");
         this.movieName = new TextField("movieName");
-
+        Button confirmBookingButton = new Button("Book Tickets");
 
         add(firstName, lastName, phone, email, booked_seats, confirmBookingButton);
 
@@ -42,7 +42,7 @@ public class BookingEditor extends Editor {
         setSpacing(true);
 
         save.getElement().getThemeList().add("primary");
-        delete.getElement().getThemeList().add("error");
+        //delete.getElement().getThemeList().add("error");
 
         confirmBookingButton.addClickListener(e -> saveCatcher());
         cancel.addClickListener(e->editBooking(movie));
@@ -50,15 +50,19 @@ public class BookingEditor extends Editor {
     }
 
     void saveCatcher(){
-        try{
-            connector.callCreateBooking(Integer.parseInt(movie.getId_movies().toString()),firstName.toString(),lastName.toString(),phone.toString(),
-                    email.toString(),Integer.parseInt(booked_seats.toString()));
-            //bookingBinder.setBean(booking);
-            //bookingBinder.writeBean(booking);
-            //confirmBooking(booking);
-        } catch (SQLException throwables){
-            throwables.printStackTrace();
-        }
+        setBookingTime();
+        bookingRepository.save(
+                new Booking(
+                        firstName.getValue(),
+                        lastName.getValue(),
+                        phone.getValue(),
+                        email.getValue(),
+                        time_booked.getValue(),
+                        booked_seats.getValue(),
+                        2L
+                )
+        );
+        changeHandler.onChange();
     }
 
     public void editBooking(Movie selectedMovie) {
@@ -85,7 +89,9 @@ public class BookingEditor extends Editor {
         changeHandler.onChange();
     }
 
-    private void configureSelectSeats() {}
+    private void setBookingTime() {
+        String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        time_booked.setValue(dateTime);
+    }
 
-    private void configureConfirmBookingButton() {}
 }

@@ -7,22 +7,22 @@ import java.util.Optional;
 
 public interface Connector {
 
-    public Optional <Staff> getPerson (String firstName);
-    public void callAddMovie (String name, String length, String genre ) throws SQLException;
-    public void callAddSaloon (String name, String seats ) throws SQLException;
-    public void callAddShift (String name, String length ) throws SQLException;
-    public void callAddStaff (String firstName,
-                              String lastName,
-                              String adress,
-                              String city,
-                              String postalCode,
-                              String phone,
-                              String email,
-                              String socialSecurityNo
+    Optional <Staff> getPerson(String firstName);
+    void callAddMovie(String name, String length, String genre) throws SQLException;
+    void callAddSaloon(String name, String seats) throws SQLException;
+    void callAddShift(String name, String length) throws SQLException;
+    void callAddStaff(String firstName,
+                      String lastName,
+                      String adress,
+                      String city,
+                      String postalCode,
+                      String phone,
+                      String email,
+                      String socialSecurityNo
     )
 
             throws SQLException;
-    public void callCreateBooking(int MovieID,String FirstName, String LastName, String Phone,
-                                  String Email, int BookedSeats) throws SQLException;
+    void callCreateBooking(int MovieID, String FirstName, String LastName, String Phone,
+                           String Email, int BookedSeats) throws SQLException;
 
 }
