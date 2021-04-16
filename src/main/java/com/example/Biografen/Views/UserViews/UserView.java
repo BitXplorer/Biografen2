@@ -1,5 +1,6 @@
 package com.example.Biografen.Views.UserViews;
 
+import com.example.Biografen.Editors.BookingEditor;
 import com.example.Biografen.Objects.Movie;
 import com.example.Biografen.Objects.MovieRepository;
 import com.example.Biografen.Views.layout.MainLayout;
@@ -19,6 +20,7 @@ public class UserView extends VerticalLayout {
     private TextField searchField = new TextField();
     private MovieRepository movieRepo;
     private Grid<Movie> movieGrid = new Grid<>(Movie.class);
+    private BookingEditor editor = new BookingEditor(movieRepo);
 
     public UserView(MovieRepository movieRepo) {
         this.movieRepo = movieRepo;
@@ -26,12 +28,16 @@ public class UserView extends VerticalLayout {
         add(searchField);
         configureGrid();
         add(movieGrid);
+        searchMovies();
     }
 
     private void configureGrid() {
         movieGrid.setHeight("400px");
         movieGrid.setColumns("movieName", "length", "genre");
         movieGrid.getColumns().forEach(col -> col.setAutoWidth(true));
+
+        movieGrid.asSingleSelect().addValueChangeListener(e-> {editor.editBooking(e.getValue());
+        });
     }
 
     private void configureSearchField() {
