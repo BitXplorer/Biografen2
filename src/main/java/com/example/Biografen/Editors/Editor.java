@@ -1,6 +1,6 @@
 package com.example.Biografen.Editors;
 
-import com.example.Biografen.Connector.Connector;
+
 import com.example.Biografen.Objects.*;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;

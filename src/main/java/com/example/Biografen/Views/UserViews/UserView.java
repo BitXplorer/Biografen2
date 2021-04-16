@@ -34,7 +34,6 @@ public class UserView extends VerticalLayout {
         add(movieGrid);
         searchMovies();
         add(bookingEditor);
-      // movieGrid.setColumns();
         movieList();
     }
 

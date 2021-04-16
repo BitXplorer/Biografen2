@@ -9,7 +9,6 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long booking_id;
-
     private String first_name;
     private String last_name;
     private String Phone;

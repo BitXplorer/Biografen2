@@ -15,8 +15,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-
-    //TODO - ändra här
     private static final String LOGIN_PROCESSING_URL = "/login";
     private static final String LOGIN_FAILURE_URL = "/login?error";
     private static final String LOGIN_URL = "/login";
@@ -49,7 +47,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL);
     }
 
-    //TODO - Fix to use with MySQL. Olika användare.
     @Bean
     @Override
     public UserDetailsService userDetailsService() {

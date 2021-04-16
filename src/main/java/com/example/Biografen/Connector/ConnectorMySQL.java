@@ -1,14 +1,13 @@
-package com.example.Biografen;
+package com.example.Biografen.Connector;
 
-import com.example.Biografen.Connector.Connector;
+
 import com.example.Biografen.Objects.Staff;
 
 import java.sql.*;
 import java.util.Optional;
 
 public class ConnectorMySQL implements Connector {
-    //TODO
-    //Skapa en connector till databasen
+
     private Connection myConn;
 
     public ConnectorMySQL() {
@@ -55,5 +54,20 @@ public class ConnectorMySQL implements Connector {
     @Override
     public void callcreate_booking(Integer MovieID, String FirstName, String LastName, String Phone, String Email, Integer BookedSeats) throws SQLException {
 
+        String sql = "Call create_booking(?,?,?,?,?,?);";
+        try (CallableStatement stmt = myConn.prepareCall(sql)) {
+            System.out.println(sql);
+
+            stmt.setInt(1,MovieID);
+            stmt.setString(2, FirstName);
+            stmt.setString(3,LastName);
+            stmt.setString(4,Phone);
+            stmt.setString(5,Email);
+            stmt.setInt(6,BookedSeats);
+            System.out.println(sql);
+
+            stmt.execute();
+
+        }
     }
 }

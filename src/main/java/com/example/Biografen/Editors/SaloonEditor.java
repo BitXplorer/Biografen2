@@ -23,8 +23,6 @@ public class SaloonEditor extends Editor {
         //Lägger till knapparna
         add(saloonName, seats, actions);
 
-
-        //TODO  - Kolla Kolla saloonBinder
         saloonBinder.bindInstanceFields(this);
         setSpacing(true);
 
@@ -55,7 +53,6 @@ public class SaloonEditor extends Editor {
         changeHandler.onChange();
     }
 
-    // TODO - Fixa procedure för addSaloon i databasen. Ligger en nu men den strular på [MoviesidMovies]
     void saveSaloon(Saloon saloon) throws SQLException {
         saloonRepository.save(saloon);
         changeHandler.onChange();

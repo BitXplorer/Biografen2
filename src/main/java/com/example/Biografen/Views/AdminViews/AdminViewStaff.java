@@ -61,8 +61,6 @@ public class AdminViewStaff  extends VerticalLayout {
         grid.asSingleSelect().addValueChangeListener(e -> { editor.editStaff(e.getValue());
         });
 
-
-        //TODO - Kolla mot AdminViewMoviews
         //instantiate end edit new staff
         addStaff.addClickListener (e -> editor.
                 editStaff(new Staff("","","","","",

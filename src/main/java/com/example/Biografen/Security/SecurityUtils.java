@@ -21,8 +21,6 @@ public class SecurityUtils {
         // Util methods only
     }
 
-
-    //TODO - kolla de här!
     public static boolean isAccessGranted(Class<?> securedClass) {
         if(LoginView.class.equals(securedClass)) {
             return true;

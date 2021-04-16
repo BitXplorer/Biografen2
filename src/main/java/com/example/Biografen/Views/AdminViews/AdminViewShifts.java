@@ -47,17 +47,14 @@ public class AdminViewShifts extends VerticalLayout {
 
         grid.setHeight("300px");
         grid.setColumns("id_shifts","name","length");
-        //grid.addColumn(Shift::getId_shifts).setHeader("Shift ID").setWidth("50px").setFlexGrow(0);
-        //grid.addColumn(Shift::getName).setHeader("Name");
-        //grid.addColumn(Shift::getLength).setHeader("Length");
+
 
         //Hook logic
         //Replace listing with filter
         filterName.setValueChangeMode(ValueChangeMode.EAGER);
         filterName.addValueChangeListener(e-> listShifts(e.getValue()));
 
-        //TODO:
-        //VARFÖR ÄR e.getValue() FORTFARANDE NULL!??
+
         grid.asSingleSelect().addValueChangeListener(e-> {editor.editShift(e.getValue());
         });
 
