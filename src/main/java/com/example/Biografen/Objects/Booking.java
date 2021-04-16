@@ -15,7 +15,7 @@ public class Booking {
     private String Phone;
     private String Email;
     private String time_booked;
-    private int booked_seats;
+    private String booked_seats;
     private Long saloon_id_saloon;
 
     protected Booking() {}
@@ -95,7 +95,7 @@ public class Booking {
     @Override
     public String toString(){
         return String.format("Booking[id=%d, firstName='%s', lastName=%s, phone='%s', email='%s', " +
-                        "time_booked='%s', booked_seats='%d', saloon_id='%d']",
+                        "time_booked='%s', booked_seats='%s', saloon_id='%d']",
                 booking_id, first_name, last_name, Phone, Email, time_booked, booked_seats, saloon_id_saloon);
     }
 }

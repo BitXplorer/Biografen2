@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @UIScope
 public class Editor extends VerticalLayout implements KeyNotifier {
 
-    protected Connector connector;
+
 
     protected MovieRepository movieRepository;
     protected StaffRepository staffRepository;

@@ -1,9 +1,12 @@
 package com.example.Biografen.Editors;
 
+import com.example.Biografen.Connector.Connector;
+import com.example.Biografen.ConnectorMySQL;
 import com.example.Biografen.Objects.Booking;
 import com.example.Biografen.Objects.BookingRepository;
 import com.example.Biografen.Objects.Movie;
 import com.example.Biografen.Objects.MovieRepository;
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.textfield.TextField;
@@ -16,8 +19,10 @@ import java.sql.SQLException;
 public class BookingEditor extends Editor {
 
     TextField movieName, firstName, lastName, phone, email, booked_seats;
+
    // H3 movieName = new H3();
     Button confirmBookingButton = new Button("Book Tickets");
+    ConnectorMySQL connectorMySQL;
 
 
     @Autowired
@@ -32,18 +37,21 @@ public class BookingEditor extends Editor {
         this.email = new TextField("Email");
         this.booked_seats = new TextField("Number of Seats");
         this.movieName = new TextField("movieName");
+        this.connectorMySQL = new ConnectorMySQL();
+
 
 
         add(firstName, lastName, phone, email, booked_seats, confirmBookingButton);
 
         movieBinder.bindInstanceFields(this);
         //movieBinder.forField(firstName).bind(Movie::getMovieName,Movie::setMovieName);
-        bookingBinder.bindInstanceFields(this);
+        //bookingBinder.bindInstanceFields(this);
         setSpacing(true);
 
         save.getElement().getThemeList().add("primary");
         delete.getElement().getThemeList().add("error");
 
+        addKeyPressListener(Key.ENTER, e -> saveCatcher());
         confirmBookingButton.addClickListener(e -> saveCatcher());
         cancel.addClickListener(e->editBooking(movie));
         setVisible(false);
@@ -51,8 +59,9 @@ public class BookingEditor extends Editor {
 
     void saveCatcher(){
         try{
-            connector.callCreateBooking(Integer.parseInt(movie.getId_movies().toString()),firstName.toString(),lastName.toString(),phone.toString(),
-                    email.toString(),Integer.parseInt(booked_seats.toString()));
+
+            connectorMySQL.callcreate_booking(Integer.parseInt(movie.getId_movies().toString()),firstName.toString(),lastName.toString(),phone.toString(),
+                    email.toString(),Integer.parseInt(booked_seats.getValue()));
             //bookingBinder.setBean(booking);
             //bookingBinder.writeBean(booking);
             //confirmBooking(booking);
