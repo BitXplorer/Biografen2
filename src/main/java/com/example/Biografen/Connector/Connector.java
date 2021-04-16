@@ -19,6 +19,10 @@ public interface Connector {
                               String phone,
                               String email,
                               String socialSecurityNo
-    ) throws SQLException;
+    )
+
+            throws SQLException;
+    public void callCreateBooking(int MovieID,String FirstName, String LastName, String Phone,
+                                  String Email, int BookedSeats) throws SQLException;
 
 }

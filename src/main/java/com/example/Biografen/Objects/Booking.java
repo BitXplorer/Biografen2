@@ -15,7 +15,7 @@ public class Booking {
     private String Phone;
     private String Email;
     private String time_booked;
-    private String booked_seats;
+    private int booked_seats;
     private Long saloon_id_saloon;
 
     protected Booking() {}

@@ -1,6 +1,7 @@
 package com.example.Biografen.Views.UserViews;
 
 import com.example.Biografen.Editors.BookingEditor;
+import com.example.Biografen.Objects.BookingRepository;
 import com.example.Biografen.Objects.Movie;
 import com.example.Biografen.Objects.MovieRepository;
 import com.example.Biografen.Views.layout.MainLayout;
@@ -19,16 +20,22 @@ public class UserView extends VerticalLayout {
 
     private TextField searchField = new TextField();
     private MovieRepository movieRepo;
+    private BookingRepository bookingRepository;
     private Grid<Movie> movieGrid = new Grid<>(Movie.class);
-    private BookingEditor editor = new BookingEditor(movieRepo);
+    private BookingEditor bookingEditor;
 
-    public UserView(MovieRepository movieRepo) {
+    public UserView(MovieRepository movieRepo, BookingRepository bookingrepo) {
+        this.bookingEditor = new BookingEditor(movieRepo, bookingrepo );
+        this.bookingRepository = bookingrepo;
         this.movieRepo = movieRepo;
         configureSearchField();
         add(searchField);
         configureGrid();
         add(movieGrid);
         searchMovies();
+        add(bookingEditor);
+      // movieGrid.setColumns();
+        movieList();
     }
 
     private void configureGrid() {
@@ -36,7 +43,7 @@ public class UserView extends VerticalLayout {
         movieGrid.setColumns("movieName", "length", "genre");
         movieGrid.getColumns().forEach(col -> col.setAutoWidth(true));
 
-        movieGrid.asSingleSelect().addValueChangeListener(e-> {editor.editBooking(e.getValue());
+        movieGrid.asSingleSelect().addValueChangeListener(e-> {bookingEditor.editBooking(e.getValue());
         });
     }
 

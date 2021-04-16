@@ -1,6 +1,7 @@
 package com.example.Biografen.Editors;
 
 import com.example.Biografen.Objects.Booking;
+import com.example.Biografen.Objects.BookingRepository;
 import com.example.Biografen.Objects.Movie;
 import com.example.Biografen.Objects.MovieRepository;
 import com.vaadin.flow.component.button.Button;
@@ -14,26 +15,30 @@ import java.sql.SQLException;
 
 public class BookingEditor extends Editor {
 
-    TextField firstName, lastName, phone, email, noOfSeats;
-    H3 movieName = new H3();
+    TextField movieName, firstName, lastName, phone, email, booked_seats;
+   // H3 movieName = new H3();
     Button confirmBookingButton = new Button("Book Tickets");
-    Binder<Booking> bookingBinder;
+
 
     @Autowired
-    public BookingEditor(MovieRepository movieRepo) {
+    public BookingEditor(MovieRepository movieRepo, BookingRepository bookingRepository) {
         this.movieRepository = movieRepo;
+        this.bookingRepository = bookingRepository;
         this.movieBinder = new Binder<>(Movie.class);
         this.bookingBinder = new Binder<>(Booking.class);
         this.firstName = new TextField("First Name");
         this.lastName = new TextField("Last Name");
         this.phone = new TextField("Phone Number");
         this.email = new TextField("Email");
-        this.noOfSeats = new TextField("Number of Seats");
+        this.booked_seats = new TextField("Number of Seats");
+        this.movieName = new TextField("movieName");
 
 
-        add(firstName, lastName, phone, email, noOfSeats, confirmBookingButton);
+        add(firstName, lastName, phone, email, booked_seats, confirmBookingButton);
 
         movieBinder.bindInstanceFields(this);
+        //movieBinder.forField(firstName).bind(Movie::getMovieName,Movie::setMovieName);
+        bookingBinder.bindInstanceFields(this);
         setSpacing(true);
 
         save.getElement().getThemeList().add("primary");
@@ -41,13 +46,17 @@ public class BookingEditor extends Editor {
 
         confirmBookingButton.addClickListener(e -> saveCatcher());
         cancel.addClickListener(e->editBooking(movie));
+        setVisible(false);
     }
 
     void saveCatcher(){
         try{
-            bookingBinder.writeBean(booking);
-            confirmBooking(booking);
-        } catch (SQLException | ValidationException throwables){
+            connector.callCreateBooking(Integer.parseInt(movie.getId_movies().toString()),firstName.toString(),lastName.toString(),phone.toString(),
+                    email.toString(),Integer.parseInt(booked_seats.toString()));
+            //bookingBinder.setBean(booking);
+            //bookingBinder.writeBean(booking);
+            //confirmBooking(booking);
+        } catch (SQLException throwables){
             throwables.printStackTrace();
         }
     }
@@ -65,8 +74,9 @@ public class BookingEditor extends Editor {
         }
         cancel.setVisible(persisted);
 
-        movieBinder.setBean(movie);
-
+        //movieBinder.setBean(movie);
+        //booking  = new Booking("","","","","","",1L);
+        //bookingBinder.setBean(booking);
         setVisible(true);
     }
 

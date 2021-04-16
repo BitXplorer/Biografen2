@@ -1,5 +1,6 @@
 package com.example.Biografen.Editors;
 
+import com.example.Biografen.Connector.Connector;
 import com.example.Biografen.Objects.*;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 @UIScope
 public class Editor extends VerticalLayout implements KeyNotifier {
 
+    protected Connector connector;
 
     protected MovieRepository movieRepository;
     protected StaffRepository staffRepository;
@@ -37,6 +39,7 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     Binder<Staff> staffBinder;
     Binder<Shift> shiftBinder;
     Binder<Saloon> saloonBinder;
+    Binder<Booking> bookingBinder;
 
     protected ChangeHandler changeHandler;
 
