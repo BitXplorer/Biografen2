@@ -6,6 +6,7 @@ import com.example.Biografen.Views.AdminViews.AdminViewShifts;
 import com.example.Biografen.Views.AdminViews.AdminViewStaff;
 import com.example.Biografen.Views.HelloWorldView;
 import com.example.Biografen.Views.MainView;
+import com.example.Biografen.Views.UserViews.UserView;
 import com.example.Biografen.Views.statistics.MovieStatisticsView;
 import com.example.Biografen.Views.statistics.SaloonStatisticsView;
 import com.example.Biografen.Views.statistics.ShiftStatisticsView;
@@ -82,6 +83,7 @@ public class MainLayout extends AppLayout {
         RouterLink shiftStatisticsLink = new RouterLink("Shift Statistics", ShiftStatisticsView.class);
         RouterLink staffStatisticsLink = new RouterLink("Staff Statistics", StaffStatisticsView.class);
         RouterLink salonStatisticsLink = new RouterLink("Saloon Statistics", SaloonStatisticsView.class);
+        RouterLink bookingLink = new RouterLink("Booking", UserView.class);
 
         addToDrawer(new VerticalLayout(
                 helloWorldLink,
@@ -94,7 +96,9 @@ public class MainLayout extends AppLayout {
                 movieStatisticsLink,
                 shiftStatisticsLink,
                 staffStatisticsLink,
-                salonStatisticsLink
+                salonStatisticsLink,
+
+                bookingLink
         ));
     }
 }
