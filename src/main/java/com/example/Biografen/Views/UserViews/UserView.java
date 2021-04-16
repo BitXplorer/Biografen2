@@ -26,6 +26,7 @@ public class UserView extends VerticalLayout {
         add(searchField);
         configureGrid();
         add(movieGrid);
+        searchMovies();
     }
 
     private void configureGrid() {
