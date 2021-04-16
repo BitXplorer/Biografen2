@@ -19,11 +19,13 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     protected StaffRepository staffRepository;
     protected ShiftRepository shiftRepository;
     protected SaloonRepository saloonRepository;
+    protected BookingRepository bookingRepository;
 
     protected Movie movie;
     protected Staff staff;
     protected Shift shift;
     protected Saloon saloon;
+    protected Booking booking;
 
 
     Button save = new Button("Save", VaadinIcon.PLUS.create());
