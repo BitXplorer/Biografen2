@@ -1,13 +1,11 @@
 package com.example.Biografen.Editors;
 
-import com.example.Biografen.Connector.Connector;
 import com.example.Biografen.Objects.*;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
@@ -16,7 +14,7 @@ import org.springframework.stereotype.Component;
 @UIScope
 public class Editor extends VerticalLayout implements KeyNotifier {
 
-    protected Connector connector;
+
     protected MovieRepository movieRepository;
     protected StaffRepository staffRepository;
     protected ShiftRepository shiftRepository;
@@ -27,22 +25,6 @@ public class Editor extends VerticalLayout implements KeyNotifier {
     protected Shift shift;
     protected Saloon saloon;
 
-
-    TextField movieName,
-            length,
-            genre,
-            firstName,
-            lastName,
-            address,
-            city,
-            postalCode,
-            phone,
-            email,
-            socialSecurityNo,
-            shiftName,
-            shiftLength,
-            saloonName,
-            saloonSeats;
 
     Button save = new Button("Save", VaadinIcon.PLUS.create());
     Button cancel = new Button("Cancel", VaadinIcon.PLUS.create());

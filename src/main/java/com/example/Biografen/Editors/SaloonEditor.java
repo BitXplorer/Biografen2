@@ -11,15 +11,17 @@ import java.sql.SQLException;
 
 public class SaloonEditor extends Editor {
 
+    TextField saloonName, seats;
+
     public SaloonEditor (SaloonRepository repo){
         this.saloonRepository = repo;
         this.saloonBinder = new Binder<>(Saloon.class);
         saloonName = new TextField("Saloon name");
-        saloonSeats = new TextField("Seats");
+        seats = new TextField("Seats");
 
 
         //Lägger till knapparna
-        add(saloonName, saloonSeats, actions);
+        add(saloonName, seats, actions);
 
 
         //TODO  - Kolla Kolla saloonBinder
@@ -75,7 +77,7 @@ public class SaloonEditor extends Editor {
 
         setVisible(true);
 
-        movieName.focus();
+        saloonName.focus();
     }
     
 }

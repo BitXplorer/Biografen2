@@ -1,0 +1,12 @@
+
+N
+java:S1602:",Remove useless curly braces around statement(ƒ²Òøÿÿÿÿ8…äÙŒ/
+Q
+java:S1874K"/Remove this use of "isEmpty"; it is deprecated.(ùÁŒ­ÿÿÿÿÿ8…äÙŒ/
+D
+java:S1659""Declare "back" on a separate line.(ÿš­ûÿÿÿÿ8éÙÜŒ/
+I
+java:S16026",Remove useless curly braces around statement(²Øó8…äÙŒ/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Òª‡
+H
+java:S1948"&Make "repo" transient or serializable.(ÉĞ²şÿÿÿÿ8ªºßÜŒ/

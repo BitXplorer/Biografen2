@@ -14,43 +14,50 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.StringUtils;
 
 
 @Route(value = "adminShifts", layout = MainLayout.class)
 @PageTitle("ADMIN Shifts | Newton Cinema")
+@Secured("ROLE_Admin")
 public class AdminViewShifts extends VerticalLayout {
 
     private final ShiftRepository repo;
     final ShiftEditor editor;
     final Grid<Shift> grid;
-    final TextField filterShiftName;
+    final TextField filterName;
     private final Button addShift, back;
 
+    @Autowired
     public AdminViewShifts (ShiftRepository repo){
         this.repo = repo;
         this.grid = new Grid<>(Shift.class);
         this.editor = new ShiftEditor(repo);
-        this.filterShiftName = new TextField("Filter by name");
+        this.filterName = new TextField("Filter by name");
         this.addShift = new Button("New Shift", VaadinIcon.PLUS.create());
         this.back = new Button("Back", VaadinIcon.HOME.create());
 
         //Build layout
-        HorizontalLayout actions = new HorizontalLayout(filterShiftName, addShift, back);
+        HorizontalLayout actions = new HorizontalLayout(filterName, addShift, back);
         add(actions, grid, editor);
         actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
 
         grid.setHeight("300px");
         grid.setColumns("id_shifts","name","length");
-        grid.getColumnByKey("id_shifts").setWidth("50px").setFlexGrow(0);
+        //grid.addColumn(Shift::getId_shifts).setHeader("Shift ID").setWidth("50px").setFlexGrow(0);
+        //grid.addColumn(Shift::getName).setHeader("Name");
+        //grid.addColumn(Shift::getLength).setHeader("Length");
 
         //Hook logic
         //Replace listing with filter
-        filterShiftName.setValueChangeMode(ValueChangeMode.EAGER);
-        filterShiftName.addValueChangeListener(e-> listShifts(e.getValue()));
+        filterName.setValueChangeMode(ValueChangeMode.EAGER);
+        filterName.addValueChangeListener(e-> listShifts(e.getValue()));
 
-        //Connect selected shift to editor or hide if none is selected
+        //TODO:
+        //VARFÖR ÄR e.getValue() FORTFARANDE NULL!??
         grid.asSingleSelect().addValueChangeListener(e-> {editor.editShift(e.getValue());
         });
 
@@ -63,7 +70,7 @@ public class AdminViewShifts extends VerticalLayout {
         //Listen to changes made by the editor and refresh data
         editor.setChangeHandler(()-> {
             editor.setVisible(false);
-            listShifts(filterShiftName.getValue());
+            listShifts(filterName.getValue());
         });
         //Initialize listing
         listShifts(null);

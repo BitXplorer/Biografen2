@@ -6,23 +6,30 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.SQLException;
 
 public class ShiftEditor extends Editor{
 
+    TextField name, length;
+
+    @Autowired
     public ShiftEditor (ShiftRepository repo){
         this.shiftRepository = repo;
         this.shiftBinder = new Binder<>(Shift.class);
-        shiftName = new TextField("Shift Name");
-        shiftLength = new TextField("Shift Length");
+        name = new TextField("Shift Name");
+        length = new TextField("Shift Length");
 
-        add(shiftName,shiftLength, actions);
+        add(name,length, actions);
 
-        shiftBinder.bindInstanceFields(this);
+
+        //shiftBinder.bindInstanceFields(shift);
+        shiftBinder.forField(name).bind(Shift::getName,Shift::setName);
+        shiftBinder.forField(length).bind(Shift::getLength, Shift::setLength);
         setSpacing(true);
 
-        save.getElement().getThemeList().add("Primary");
+        save.getElement().getThemeList().add("primary");
         delete.getElement().getThemeList().add("error");
 
         addKeyPressListener(Key.ENTER, e -> saveCatcher());
@@ -57,7 +64,7 @@ public class ShiftEditor extends Editor{
         }
         final boolean persisted = s.getId_shifts() != null;
         if (persisted){
-            shift = shiftRepository.findById(shift.getId_shifts()).get();
+            shift = shiftRepository.findById(s.getId_shifts()).get();
         }else {
             shift = s;
         }
@@ -67,6 +74,6 @@ public class ShiftEditor extends Editor{
 
         setVisible(true);
 
-        shiftName.focus();
+        name.focus();
     }
 }

@@ -14,10 +14,13 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.StringUtils;
 
 @Route(value = "adminStaff", layout = MainLayout.class)
 @PageTitle("ADMIN Staff | Newton Cinema")
+@Secured("ROLE_Admin")
 public class AdminViewStaff  extends VerticalLayout {
 
     private final StaffRepository repo;
@@ -26,6 +29,7 @@ public class AdminViewStaff  extends VerticalLayout {
     final TextField filterFirstName, filterLastName;
     private final Button addStaff, back;
 
+    @Autowired
     public AdminViewStaff(StaffRepository repo){
         this.repo = repo;
         this.grid = new Grid<>(Staff.class);
@@ -62,7 +66,7 @@ public class AdminViewStaff  extends VerticalLayout {
         //instantiate end edit new staff
         addStaff.addClickListener (e -> editor.
                 editStaff(new Staff("","","","","",
-                "","","", "")));
+                "","",null, "")));
 
         //back button | .navigate("") -> Bestämmer till vilken vy man skall gå till.
         back.addClickListener(e -> UI.getCurrent().navigate(""));

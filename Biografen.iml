@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="16" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -115,7 +116,6 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.19" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin:flow-lit-template:2.5.1" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin:flow-push:2.5.1" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.atmosphere:atmosphere-runtime:2.4.30.slf4jvaadin1" level="project" />
@@ -211,5 +211,6 @@
     <orderEntry type="library" name="Maven: org.webjars.bowergithub.vaadin:vaadin-context-menu:4.5.0" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin:vaadin-menu-bar-flow:14.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.bowergithub.vaadin:vaadin-menu-bar:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
   </component>
 </module>

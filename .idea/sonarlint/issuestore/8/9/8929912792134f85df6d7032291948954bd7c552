@@ -1,4 +1,6 @@
 
+Y
+java:S3655B"7Call "Optional#isPresent()" before accessing the value.(¸§Ëÿüÿÿÿÿ8¾ö¸İŒ/
+‹
+java:S11307"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(•¤¨Ê8À»Ö/
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¦¶†Öúÿÿÿÿ
-M
-java:S3655F"7Call "Optional#isPresent()" before accessing the value.(¹ß¤Ï

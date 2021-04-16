@@ -15,11 +15,14 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.StringUtils;
 
 
 @Route(value = "adminMovies", layout = MainLayout.class)
 @PageTitle("ADMIN Movies | Newton Cinema")
+@Secured("ROLE_Admin")
 public class AdminViewMovies  extends VerticalLayout {
 
     private final MovieRepository repo;
@@ -28,17 +31,19 @@ public class AdminViewMovies  extends VerticalLayout {
     final TextField filterMovieName;
     private final Button addMovie, back;
 
+    @Autowired
     public AdminViewMovies (MovieRepository repo){
         this.repo = repo;
         this.grid = new Grid<>(Movie.class);
         this.editor = new MovieEditor(repo);
-        this.filterMovieName = new TextField();
+        this.filterMovieName = new TextField("Filter by name");
         this.addMovie = new Button("New Movie", VaadinIcon.PLUS.create());
         this.back = new Button("Back",VaadinIcon.HOME.create());
 
         //Build layout
         HorizontalLayout actions = new HorizontalLayout(filterMovieName, addMovie, back);
         add(actions,grid, editor);
+        actions.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
 
         grid.setHeight("400px");
