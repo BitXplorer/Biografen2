@@ -3,6 +3,7 @@ package com.example.Biografen.Security;
 import com.example.Biografen.Views.login.LoginView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.NotFoundException;
 import com.vaadin.flow.server.ServiceInitEvent;
 import com.vaadin.flow.server.VaadinServiceInitListener;
 import org.springframework.stereotype.Component;
@@ -25,18 +26,14 @@ public class ConfigureUIServiceInitListener implements VaadinServiceInitListener
      * @param event
      *              before navigation event with event details
      */
-    //TODO - ändra här
     private void authenticateNavigation(BeforeEnterEvent event) {
-
-        /*
-        if (!SecurityUtils.isAccessGranted(event.getNavigationTarget())) { // (1)
-            if (SecurityUtils.isUserLoggedIn()) { // (2)
-                event.rerouteToError(NotFoundException.class); // (3)
+        if (!SecurityUtils.isAccessGranted(event.getNavigationTarget())) {
+            if (SecurityUtils.isUserLoggedIn()) {
+                event.rerouteToError(NotFoundException.class);
             } else {
-                event.rerouteTo(LoginView.class); // (4)
+                event.rerouteTo(LoginView.class);
             }
         }
-         */
 
         if (!LoginView.class.equals(event.getNavigationTarget())
                 && !SecurityUtils.isUserLoggedIn()) {
