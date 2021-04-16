@@ -35,7 +35,8 @@ public class AdminViewShifts extends VerticalLayout {
         this.repo = repo;
         this.grid = new Grid<>(Shift.class);
         this.editor = new ShiftEditor(repo);
-        this.filterName = new TextField("Filter by name");
+        this.filterName = new TextField();
+        this.filterName.setPlaceholder("Filter by name");
         this.addShift = new Button("New Shift", VaadinIcon.PLUS.create());
         this.back = new Button("Back", VaadinIcon.HOME.create());
 

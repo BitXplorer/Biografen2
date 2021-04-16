@@ -15,7 +15,8 @@ public class MainView extends VerticalLayout {
 
     public MainView() {
         Button button = new Button("Click me to get you date and time");
-        DateTimePicker dateTimePicker = new DateTimePicker("DateTimePicker");
+        DateTimePicker dateTimePicker = new DateTimePicker();
+        dateTimePicker.setDatePlaceholder("Pick you date");
 
         HorizontalLayout layout = new HorizontalLayout(dateTimePicker, button);
         layout.setDefaultVerticalComponentAlignment(Alignment.END);

@@ -36,7 +36,8 @@ public class AdminViewSaloon extends VerticalLayout {
         this.repo = repo;
         this.grid = new Grid<>(Saloon.class);
         this.editor = new SaloonEditor(repo);
-        this.filterSaloonName = new TextField("Filter by name");
+        this.filterSaloonName = new TextField();
+        this.filterSaloonName.setPlaceholder("Filter by name");
         this.addSaloon = new Button("New Saloon", VaadinIcon.PLUS.create());
         this.back = new Button("Back",VaadinIcon.HOME.create());
 
