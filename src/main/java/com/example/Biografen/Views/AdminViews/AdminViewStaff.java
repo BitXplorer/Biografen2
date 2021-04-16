@@ -34,8 +34,10 @@ public class AdminViewStaff  extends VerticalLayout {
         this.repo = repo;
         this.grid = new Grid<>(Staff.class);
         this.editor = new StaffEditor(repo);
-        this.filterFirstName = new TextField("Filter by first name");
-        this.filterLastName = new TextField("Filter by last name");
+        this.filterFirstName = new TextField();
+        this.filterFirstName.setPlaceholder("Filter by first name");
+        this.filterLastName = new TextField();
+        this.filterLastName.setPlaceholder("Filter by last name");
         this.addStaff = new Button("New staff", VaadinIcon.PLUS.create());
         this.back = new Button("Back", VaadinIcon.HOME.create());
 

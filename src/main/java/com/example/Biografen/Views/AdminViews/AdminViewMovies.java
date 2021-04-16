@@ -36,7 +36,8 @@ public class AdminViewMovies  extends VerticalLayout {
         this.repo = repo;
         this.grid = new Grid<>(Movie.class);
         this.editor = new MovieEditor(repo);
-        this.filterMovieName = new TextField("Filter by name");
+        this.filterMovieName = new TextField();
+        this.filterMovieName.setPlaceholder("Filter by name");
         this.addMovie = new Button("New Movie", VaadinIcon.PLUS.create());
         this.back = new Button("Back",VaadinIcon.HOME.create());
 
